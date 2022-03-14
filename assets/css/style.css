@@ -9,3 +9,8 @@ header{
     justify-content: center;
     background-color: blue;
 }
+
+#carouselControls{
+    max-height: 50px;
+    outline: 15px solid green;
+}
