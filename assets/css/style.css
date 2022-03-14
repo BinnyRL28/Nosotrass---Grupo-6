@@ -6,16 +6,10 @@ header{
     left: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: blue;
 }
 
-<<<<<<< HEAD
-#carouselControls{
-    max-height: 50px;
-    outline: 15px solid green;
-}
-=======
 .header .navbar a{
     margin:0 1rem;
     font-size: 1.6rem;
@@ -27,4 +21,3 @@ header{
     border-bottom: .1rem solid blue;
     padding-bottom: .5rem;
 }
->>>>>>> fdf8f9f9ccb3f71c171c1413ba7c85396ca3f081
