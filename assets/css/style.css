@@ -125,37 +125,3 @@ header .navbar a:hover{
 
 
 /* media queries  */
-@media (max-width:991px){
-
-    html{
-        font-size: 55%;
-    }
-
-    .header{
-        padding:1.5rem 2rem;
-    }
-
-    section{
-        padding:2rem;
-    }
-
-}
-
-@media (max-width:768px){
-
-    #menu-btn{
-        display: inline-block;
-    }
-}
-
-
-
-
-
-@media (min-width: 700px) and (max-width: 800px){
-	.lateral{
-		width: 33%;
-		float: right;
-		background-color: #6ee;
-	}
-}
