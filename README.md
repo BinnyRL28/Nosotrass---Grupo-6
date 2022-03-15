@@ -16,17 +16,24 @@
 <p>A continuación, una breve explicación de las etapas por las que pasamos:</p>
 <h2>Empatizar</h2>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Empatizar.png"></img>
+<p></p>
+<p></p>
 <h2>Definir</h2>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Definir.png"></img>
+<p></p>
+<p></p>
 <h2>Idear</h2>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Idear.png"></img>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Idear%202.png"></img>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Idear%203.png"></img>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Idear%204.png"></img>
+<p></p>
+<p></p>
 <h2>Prototipar</h2>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Prototipar.png"></img>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Prototipar%202.png"></img>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Prototipar%203.png"></img>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Prototipar%204.png"></img>
 <img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Prototipar%205.png"></img>
+<p></p>
 <p>Las capturas provienen de <a href="https://prezi.com/view/jqSyNFAMUxPR30toX721/">este Prezi</a>.</p>
