@@ -119,6 +119,10 @@ header .navbar a:hover{
     text-align:center;
 }
 
+.imgCursos{
+    width: 250px;
+}
+
 .btnCursos{
     background: linear-gradient(to right, rgb(146, 248, 248), rgb(224, 128, 253));
 }
