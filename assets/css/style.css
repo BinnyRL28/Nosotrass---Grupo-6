@@ -382,6 +382,10 @@ header{
 
     .logo{
         padding-left: 30px;
+        justify-content: flex-start;
+    }
+    .menu{
+        justify-content: flex-end;
     }
 
     .navbar li{
