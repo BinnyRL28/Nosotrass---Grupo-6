@@ -119,6 +119,7 @@ header .navbar a:hover{
     text-align:center;
 }
 
+<<<<<<< HEAD
 .btnCursos{
     background: linear-gradient(to right, rgb(45, 42, 243) , rgb(255, 53, 147));
     color: white;
@@ -140,16 +141,18 @@ header .navbar a:hover{
         padding:2rem;
     }
 
+=======
+.imgCursos{
+    width: 250px;
+>>>>>>> 5b8a0d826cb7c304bb0f7734741b9a9240274815
 }
 
-@media (max-width:768px){
-
-    #menu-btn{
-        display: inline-block;
-    }
+.btnCursos{
+    background: linear-gradient(to right, rgb(146, 248, 248), rgb(224, 128, 253));
 }
 
 
+<<<<<<< HEAD
 
 @media (min-width: 700px) and (max-width: 800px){
 	.lateral{
@@ -158,3 +161,6 @@ header .navbar a:hover{
 		background-color: #6ee;
 	}
 }
+=======
+/* media queries  */
+>>>>>>> 5b8a0d826cb7c304bb0f7734741b9a9240274815

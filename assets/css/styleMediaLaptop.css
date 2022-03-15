@@ -1,0 +1,67 @@
+@media screen and (max-width: 1024px){
+    html{
+        width: 100%;
+    }
+
+    body{
+        width: 100%;
+    }
+
+    #sectionCursos{
+        display:grid;
+        grid-template-columns: 250px 250px 250px 250px;
+        grid-template-rows: 180px;
+    
+        /* align-items: center; */
+        justify-content:center;
+        margin-top: 20px;
+        text-align:center;
+        grid-gap: 5px;
+        margin-bottom: 15%;
+    }
+
+    .imgCursos{
+        width: 90%;
+    }
+
+    #carouselControls{
+        margin-top: 8%;
+    }
+}
+
+@media screen  and (min-width: 1025px) and (max-width: 1440px){
+    html{
+        width: 100%;
+    }
+
+    body{
+        width: 100%;
+    }
+
+    #sectionCursos{
+        display:grid;
+        grid-template-columns: 320px 320px 320px 320px;
+        grid-template-rows: 320px;
+        justify-content:center;
+        margin-bottom: 10%;
+        text-align:center;
+        grid-gap: 2%;
+    }
+
+    .gridCursos{
+       /* display: flex;*/
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .imgCursos{
+        width: 100%;
+    }
+    
+    #carouselControls{
+        margin-top: 7%;
+        margin-bottom: 2%;
+        /*margin-left: 1.5%;
+        margin-right: 1.5%;*/
+    }
+}
