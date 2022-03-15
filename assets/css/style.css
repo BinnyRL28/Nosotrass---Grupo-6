@@ -35,8 +35,8 @@ header .navbar a:hover{
 
 .logo{
     display: flex;
-    width:63px;
-    /* outline: 3px solid yellow; */
+    /* width:63px; */
+    outline: 3px solid yellow;
     align-items: center;
     justify-content: center;
     margin-left: 20px;
@@ -142,6 +142,7 @@ header .navbar a:hover{
 
 .imgCursos{
     width: 250px;
+    }
 }
 
 /* @media (min-width: 700px) and (max-width: 800px){
@@ -152,53 +153,66 @@ header .navbar a:hover{
 	}
 } */
 
-@media (min-width: 600px) and (max-width: 799px){
+@media (min-width: 426px) and (max-width: 768px){
 
     html{
-        width: 100%;
+        
     }
      body{
-        width: 90%;
+        
         justify-content: center;
         align-items:center;
      }
      header{
         padding: 5px;
+        justify-content: space-between;
+        padding:0;
      }
 
      .navbar{
         margin-right: 16px;
-        /* outline: 2px solid blue; */
+        outline: 2px solid blue;
         width: 100%;
         padding: 8px;
         font-family: monospace;
         font-weight: 0px;
+        
+    }
+    .navbar li a{
+        font-size: 16px;
     }
 
      #imagenLogo{
         width: 63px;
         border-radius: 10px;
-        /* outline: 3px solid turquoise; */
+        outline: 3px solid turquoise;
         
+    }
+    .logo{
+        outline:rgb(235, 57, 181);
     }
     
     #btn-group1{
         background-color: pink;
+        font-size: 18px;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
     
     #btn-group1:hover{
         background-color: rgb(235, 57, 181);
+        font-size: 18px;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
     
     #btn-group2{
         background-color: rgb(202, 2, 112);
+        font-size: 18px;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         color:white;
     }
     #btn-group2:hover{
         background-color: rgb(119, 3, 67);
+        font-size: 18px;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         color:white;
     }
@@ -213,9 +227,20 @@ header .navbar a:hover{
         grid-template-rows: 200px 200px ;
     
         /* align-items: center; */
-        justify-content:center;
+        /* justify-content:center; */
+        margin: auto;
         margin-top: 20px;
         text-align:center;
+        
+    }
+
+    .btn-group{
+        margin-right:00px;
+        font-size: 14px;
+    }
+
+    .imgCursos{
+        
     }
 }
 
