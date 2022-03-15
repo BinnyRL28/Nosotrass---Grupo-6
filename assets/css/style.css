@@ -26,14 +26,13 @@ header .navbar a{
 
 header .navbar a:hover{
     color: blue;
+    text-decoration:none;
     border-bottom: .1rem solid blue;
     padding-bottom: .5rem;
     text-decoration: none;
 }
 
-#carouselControls{
-    top: 50px;
-}
+
 .logo{
     display: flex;
     width:63px;
@@ -92,6 +91,7 @@ header .navbar a:hover{
 
 
 #carouselControls{
+    top:50;
     display:block;
     align-items: center;
     justify-content: center;
@@ -119,7 +119,6 @@ header .navbar a:hover{
     text-align:center;
 }
 
-<<<<<<< HEAD
 .btnCursos{
     background: linear-gradient(to right, rgb(45, 42, 243) , rgb(255, 53, 147));
     color: white;
@@ -141,26 +140,82 @@ header .navbar a:hover{
         padding:2rem;
     }
 
-=======
 .imgCursos{
     width: 250px;
->>>>>>> 5b8a0d826cb7c304bb0f7734741b9a9240274815
 }
 
-.btnCursos{
-    background: linear-gradient(to right, rgb(146, 248, 248), rgb(224, 128, 253));
-}
-
-
-<<<<<<< HEAD
-
-@media (min-width: 700px) and (max-width: 800px){
+/* @media (min-width: 700px) and (max-width: 800px){
 	.lateral{
 		width: 33%;
 		float: right;
 		background-color: #6ee;
 	}
+} */
+
+@media (min-width: 600px) and (max-width: 799px){
+
+    html{
+        width: 100%;
+    }
+     body{
+        width: 90%;
+        justify-content: center;
+        align-items:center;
+     }
+     header{
+        padding: 5px;
+     }
+
+     .navbar{
+        margin-right: 16px;
+        /* outline: 2px solid blue; */
+        width: 100%;
+        padding: 8px;
+        font-family: monospace;
+        font-weight: 0px;
+    }
+
+     #imagenLogo{
+        width: 63px;
+        border-radius: 10px;
+        /* outline: 3px solid turquoise; */
+        
+    }
+    
+    #btn-group1{
+        background-color: pink;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    
+    #btn-group1:hover{
+        background-color: rgb(235, 57, 181);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    
+    #btn-group2{
+        background-color: rgb(202, 2, 112);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color:white;
+    }
+    #btn-group2:hover{
+        background-color: rgb(119, 3, 67);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color:white;
+    }
+
+    #carouselControls{
+        margin: auto;
+        margin-top: 380px;
+    }
+	#sectionCursos{
+        display:grid;
+        grid-template-columns: 180px 180px ;
+        grid-template-rows: 200px 200px ;
+    
+        /* align-items: center; */
+        justify-content:center;
+        margin-top: 20px;
+        text-align:center;
+    }
 }
-=======
-/* media queries  */
->>>>>>> 5b8a0d826cb7c304bb0f7734741b9a9240274815
+
