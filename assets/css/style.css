@@ -381,7 +381,7 @@ header{
     }
 
     .logo{
-        padding-left: 30px;
+        padding-left: 0px;
         justify-content: flex-start;
     }
     .menu{
@@ -442,10 +442,7 @@ header{
         padding:0;
     }
 
-    .logo{
-        width:30px;
-        margin-left:0px;
-    }
+    
     .banner{
         margin-bottom: 30px;
     }
