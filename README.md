@@ -14,19 +14,19 @@
 <h2>¿Cuál fue la metodología que usamos para decidir crear la página?</h2>
 <p>Nosotras usamos la metodología <strong>Design Thinking</strong>.</p>
 <p>A continuación, una breve explicación de las etapas por las que pasamos:</p>
-<h3>Empatizar</h3>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Empatizar.png"></img>
-<h3>Definir</h3>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Definir.png"></img>
-<h3>Idear</h3>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Idear.png"></img>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Idear%202.png"></img>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Idear%203.png"></img>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Idear%204.png"></img>
-<h3>Prototipar</h3>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Prototipar.png"></img>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Prototipar%202.png"></img>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Prototipar%203.png"></img>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Prototipar%204.png"></img>
-<img src="https://github.com/BinnyRL28/Nosotrass---Grupo-6/blob/master/assets/img/Desgin%20Thinking/Prototipar%205.png"></img>
+<h2>Empatizar</h2>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Empatizar.png"></img>
+<h2>Definir</h2>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Definir.png"></img>
+<h2>Idear</h2>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Idear.png"></img>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Idear%202.png"></img>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Idear%203.png"></img>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Idear%204.png"></img>
+<h2>Prototipar</h2>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Prototipar.png"></img>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Prototipar%202.png"></img>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Prototipar%203.png"></img>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Prototipar%204.png"></img>
+<img src="https://raw.githubusercontent.com/BinnyRL28/Nosotrass---Grupo-6/master/assets/img/Desgin%20Thinking/Prototipar%205.png"></img>
 <p>Las capturas provienen de <a href="https://prezi.com/view/jqSyNFAMUxPR30toX721/">este Prezi</a>.</p>
