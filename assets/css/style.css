@@ -289,28 +289,38 @@ header .navbar a:hover{
 
 }
 
+@font-face{
+    font-family: fontMediumNosotras;
+    src:"../../assets/fonts/otf/BwModelica-Medium.otf";
+}
+
 .nombre-rosado{
     color: rgb(227, 29, 147);
+    font-family: monospace;
+    /* font-size: 60px; */
+    font-weight: 600;
 }
 
 /* media queries  */
-@media (max-width:991px){
+@media (max-width:320px){
 
-    html{
-        font-size: 55%;
+    .navbar{
+        display:flex;
+        align-items: center;
+        justify-content: stretch;
+        margin-right: 00px;
+        outline: 2px solid blue;
+        width: 100%;
+        padding: 8px;
+        font-family: monospace;
+        font-weight: 90px;
+    }
+    
+    
+    .btn-group{
+        margin-right:00px;
     }
 
-    .header{
-        padding:1.5rem 2rem;
-    }
-
-    section{
-        padding:2rem;
-    }
-
-.imgCursos{
-    width: 250px;
-    }
 }
 
 /* @media (min-width: 700px) and (max-width: 800px){
@@ -323,9 +333,6 @@ header .navbar a:hover{
 
 @media (min-width: 426px) and (max-width: 768px){
 
-    html{
-        
-    }
      body{
         
         justify-content: center;
@@ -407,8 +414,6 @@ header .navbar a:hover{
         font-size: 14px;
     }
 
-    .imgCursos{
-        
-    }
+    
 }
 
