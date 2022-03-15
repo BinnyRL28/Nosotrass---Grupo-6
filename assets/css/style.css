@@ -36,7 +36,7 @@ header .navbar a:hover{
 .logo{
     display: flex;
     /* width:63px; */
-    outline: 3px solid yellow;
+    /* outline: 3px solid yellow; */
     align-items: center;
     justify-content: center;
     margin-left: 20px;
@@ -327,6 +327,7 @@ header .navbar a:hover{
     header{
         display:flex;
         justify-content: space-between;
+        align-items: center;
         height: 80px;
         position: fixed;
         width: 100%;
@@ -334,122 +335,34 @@ header .navbar a:hover{
         left: 0;
     }
 
-    .nav-link {
-        color: white;
-        text-decoration: none;
-      }
-      
-      .logo {
-        font-size: 30px;
-        font-weight: bold;
-        padding: 0 40px;
-        line-height: 80px;
-      }
-      
-      .nav-menu {
-        display: flex;
-        margin-right: 40px;
-        list-style: none;
-      }
-      
-      .nav-menu-item {
-        font-size: 18px;
-        margin: 0 ;
-        line-height: 80px;
-        text-transform: uppercase;
-        width: max-content;
-      }
-      
-      .nav-menu-link {
-        padding: 8px 12px;
-        border-radius: 3px;
-      }
-      
-      .nav-menu-link:hover,
-      .nav-menu-link_active {
-        background-color: #034574;
-        transition: 0.5s;
-      }
-      
-      /* TOGGLE */
-      .nav-toggle {
-        color: white;
-        background: none;
-        border: none;
-        font-size: 30px;
-        padding: 0 20px;
-        line-height: 60px;
-        cursor: pointer;
-      
-        display: none;
-      }
-      
-      /* este es para el MOBILE */
-      @media (max-width: 768px) {
-        body {
-          padding-top: 70px;
-        }
-      
-        .header {
-          height: 60px;
-        }
-      
-        .logo {
-          font-size: 25px;
-          padding: 0 20px;
-          line-height: 60px;
-        }
-      
-        .nav-menu {
-          flex-direction: column;
-          align-items: center;
-          margin: 0;
-          background-color: #dd53a8;
-          position: fixed;
-          top: 60px;
-          width: 100%;
-          padding: 20px 0;
-      
-          height: calc(100% - 60px);
-          overflow-y: auto;
-      
-          left: 100%;
-          transition: left 0.3s;
-        }
-      
-        .nav-menu-item {
-          line-height: 70px;
-        }
-      
-        
-      
-        .nav-toggle {
-          display: block;
-        }
-      
-        .nav-menu_visible {
-          left: 0;
-        }
-      
-        .nav-toggle:focus:not(:focus-visible) {
-          outline: none;
-        }
-      }
+    
 
     .navbar li a{
         font-size: 13px;
+        margin:0;
     }
 
     .navbar{
         display:flex;
         align-items: center;
-        justify-content: stretch;
+        justify-content: center;
         margin-right: 0px;
-        outline: 2px solid blue;
-        width: 60%;
+        /* outline: 2px solid blue; */
+        width: 100%;
         padding: 0px;
+        flex-direction:column-reverse;
         font-family: monospace;
         font-weight: 00px;
+        text-align:center;
+    }
+
+    .logo{
+        padding-left: 30px;
+    }
+
+    .navbar li{
+        margin:0;
+        font-weight: 600;
     }
     
     .gridCursos{
@@ -483,10 +396,12 @@ header .navbar a:hover{
     }
 
     #btn-group1{
+        background-color: #fff;
         font-size: 14px;
         padding:0;
     }
     #btn-group1:hover{
+        background-color: rgb(247, 154, 211);
         font-size: 14px;
         padding:0;
     }
