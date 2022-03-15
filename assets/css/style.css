@@ -120,7 +120,8 @@ header .navbar a:hover{
 }
 
 .btnCursos{
-    background: linear-gradient(to right, rgb(146, 248, 248), rgb(224, 128, 253));
+    background: linear-gradient(to right, rgb(45, 42, 243) , rgb(255, 53, 147));
+    color: white;
 }
 
 
@@ -147,8 +148,6 @@ header .navbar a:hover{
         display: inline-block;
     }
 }
-
-
 
 
 
