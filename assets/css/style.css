@@ -1,3 +1,44 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(../fonts/otf/BwModelicaSS02-Bold.otf)
+  }
+
+@font-face {
+    font-family: segundaFuente;
+    src: url(../fonts/otf/BwModelica-Medium.otf)
+  }
+
+@font-face {
+    font-family: fuenteBanner;
+    src: url(../fonts/otf/BwModelicaSS02-ExtraBold.otf)
+  }
+
+@font-face {
+    font-family: fuenteP;
+    src: url(../fonts/otf/BwModelica-LightItalic.otf)
+  }
+
+
+
+  p{
+    font-family: fuenteP;
+  }
+
+  span{
+      font-family: fuenteBanner;
+  }
+
+  h1 {
+    font-family: segundaFuente;
+  }
+
+  a {
+    font-family: segundaFuente;
+  }
+  
+
+/* /HEADER/ */
+
 header{
     width: 100%;
     height: 80px;
@@ -54,7 +95,7 @@ header{
 }
 
 .menu ul li a:hover{
-    color: rgb(0, 30, 97);
+    color: white;
 }
 
 .menu nav img{
@@ -82,6 +123,8 @@ header{
 }
 
 
+
+/* /HEADER -- BOTONES BOOTSTRAP/ */
 
 #btn-group1{
     background-color: pink;
@@ -112,10 +155,10 @@ header{
 
 
 .btn-group{
-    margin:20px;
+    margin-top:10px;
 }
 
-
+/* /CARRUSEL (?)/ */
 
 #carouselControls{
     top:50;
@@ -135,7 +178,7 @@ header{
 }
 
 
-
+/* /CARS (aquí ira el material informativo)/ */
 .container-card{
 	width: 100%;
 	display: flex;
@@ -188,14 +231,14 @@ header{
 	padding: 10px;
 	margin-top: 10px;
 	text-decoration: none;
-	color: #2fb4cc;
-	border: 1px solid #2fb4cc;
+	color: rgb(0, 30, 97);
+	border: 1px solid rgb(0, 30, 97);
 	border-radius: 4px;
 	transition: all 400ms ease;
 	margin-bottom: 5px;
 }
 .card .contenido-card a:hover{
-	background: #2fb4cc;
+	background: rgb(0, 30, 97);
 	color: #fff;
 }
 @media only screen and (min-width:320px) and (max-width:768px){
@@ -206,7 +249,10 @@ header{
 		margin: 15px;
 	}
 }
+/* /Fin-Cards/ */
 
+
+/* /BANNER INICIAL/ */
 
 .banner{
     /* outline: 5px solid violet; */
@@ -246,19 +292,21 @@ header{
 .info{
 	z-index: 1;
 	width: 100%;
-	max-width: 550px;
+	max-width: 700px;
 	text-align: center;
 }
 .info h1{
 	color: #fff;
-	font-size: 45px;
+	font-size: 50px;
 	margin-bottom: 20px;
 	letter-spacing: 1px;
+
 }
 .info p{
 	color: #c7c7c7;
 	line-height: 1.7;
 	margin-bottom: 30px;
+    font-size: 17px;
 }
 .info a{
 	color: #fff;
@@ -276,44 +324,6 @@ header{
 
 }
 
-@font-face {
-    font-family: myFirstFont;
-    src: url(../fonts/otf/BwModelicaSS02-Bold.otf)
-  }
-
-@font-face {
-    font-family: segundaFuente;
-    src: url(../fonts/otf/BwModelica-Medium.otf)
-  }
-
-@font-face {
-    font-family: fuenteBanner;
-    src: url(../fonts/otf/BwModelicaSS02-ExtraBold.otf)
-  }
-
-@font-face {
-    font-family: fuenteP;
-    src: url(../fonts/otf/BwModelica-LightItalic.otf)
-  }
-
-
-
-  p{
-    font-family: fuenteP;
-  }
-
-  span{
-      font-family: fuenteBanner;
-  }
-
-  h1 {
-    font-family: segundaFuente;
-  }
-
-  a {
-    font-family: segundaFuente;
-  }
-
 
 
 .nombre-rosado{
@@ -322,28 +332,6 @@ header{
     /* font-size: 60px; */
     font-weight: 600;
     font-size: 55px;
-}
-
-.btn-empresa a{
-    list-style: none;
-    text-decoration: none;
-    color:black;
-    
-}
-.btn-empresa a:hover{
-    color:white;
-    
-}
-
-.btn-estudiante a{
-    list-style: none;
-    text-decoration: none;
-    color:white;
-}
-
-.btn-estudiante a:hover{
-    color:white;
-    
 }
 
 
@@ -369,67 +357,34 @@ header{
         left: 0;
     }
 
-    
-
-    .navbar li a{
-        font-size: 13px;
-        margin:0;
-    }
-
-    .navbar{
-        display:flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 0px;
-        /* outline: 2px solid blue; */
-        width: 100%;
-        padding: 0px;
-        flex-direction:column-reverse;
-        font-family: monospace;
-        font-weight: 00px;
-        text-align:center;
-    }
-
-    .logo{
-        padding-left: 30px;
-    }
-
-    .navbar li{
-        margin:0;
-        font-weight: 600;
-    }
-    
-    .btn-group{
-        margin-right:0px;
-    }
-
-    #btn-group1{
-        background-color: #fff;
-        font-size: 14px;
-        padding:0;
-    }
-    #btn-group1:hover{
-        background-color: rgb(247, 154, 211);
-        font-size: 14px;
-        padding:0;
-    }
-    #btn-group2{
-        font-size: 14px;
-        padding:0;
-    }
-    #btn-group2:hover{
-        font-size: 14px;
-        padding:0;
-    }
-
-    .logo{
-        width:30px;
-        margin-left:0px;
-    }
     .banner{
-        margin-bottom: 30px;
+        position: relative;
+        outline: 2px solid blueviolet;
     }
 
+    .info{
+        z-index: 1;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+        
+    .info h1{
+        font-size: 30px;
+
+    }
+    .info p{
+        font-size: 15px;
+    }
+    .info a{
+        font-size: 12px;
+    }
+
+    .nombre-rosado{
+        font-size: 35px;
+    }
+    
 }
 
 /* @media (min-width: 700px) and (max-width: 800px){
@@ -440,86 +395,12 @@ header{
 	}
 } */
 
-@media (min-width: 321px) and (max-width:375px){
-
-    .banner{
-        position: relative;
-        outline: 2px solid blueviolet;
-    }
-
-    #sectionCursos{
-        display:flex;
-        flex-direction:column;
-    }
-}
 
 
 
+/* /Otro media/ */
 
 
-
-
-@media (min-width: 426px) and (max-width: 768px){
-
-     body{
-        
-        justify-content: center;
-        align-items:center;
-     }
-     header{
-        padding: 5px;
-        justify-content: space-between;
-        padding:0;
-     }
-
-     .navbar{
-        margin-right: 16px;
-        outline: 2px solid blue;
-        width: 100%;
-        padding: 8px;
-        font-family: monospace;
-        font-weight: 0px;
-        
-    }
-    .navbar li a{
-        font-size: 16px;
-    }
-
-     #imagenLogo{
-        width: 63px;
-        border-radius: 10px;
-        outline: 3px solid turquoise;
-        
-    }
-    .logo{
-        outline:rgb(235, 57, 181);
-    }
-    
-    #btn-group1{
-        background-color: pink;
-        font-size: 18px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
-    
-    #btn-group1:hover{
-        background-color: rgb(235, 57, 181);
-        font-size: 18px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
-    
-    #btn-group2{
-        background-color: rgb(202, 2, 112);
-        font-size: 18px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        color:white;
-    }
-    #btn-group2:hover{
-        background-color: rgb(119, 3, 67);
-        font-size: 18px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        color:white;
-    }
-}
 
 /* RESPONSIVE*/
 
@@ -533,11 +414,10 @@ header{
 
 @media screen and (max-width: 720px){
 
+
     .menu nav{
         position: fixed;
         top: 0;
-        right: -250px;
-        background: white;
         width: 250px;
         height: 100vh;
         padding: 40px;
@@ -559,28 +439,23 @@ header{
         color: #bebebe;
     }
 
-    #selected{
-        background: none;
-        padding: 0px;
-        border-radius: none;
-        color: #F6615D;
-    }
-
     .menu nav img{
         display: block;
         width: 60px;
     }
 
-    #back_menu{
+    #nav{
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 31, 97, 0.925);
         display: none;
+        
     }
 
+    
     .menu #btn_menu{
         display: flex;
         align-items: center;
@@ -595,6 +470,6 @@ header{
     }
 
     .menu #btn_menu:hover{
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.4);
     }
 }

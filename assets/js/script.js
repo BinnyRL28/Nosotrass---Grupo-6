@@ -1,19 +1,25 @@
 $(document).ready(function (){
     setTimeout(function () {
-        $("#myModal").modal('show');
+        $("#myModal").modal('hide');
     }, 2000);
 });
 
 
-const navToggle = document.querySelector(".nav-toggle");
-const navMenu = document.querySelector(".nav-menu");
+document.getElementById("btn_menu").addEventListener("click", mostrar_menu);
 
-navToggle.addEventListener("click", () => {
-  navMenu.classList.toggle("nav-menu_visible");
+document.getElementById("btn_close").addEventListener("click", ocultar_menu);
 
-  if (navMenu.classList.contains("nav-menu_visible")) {
-    navToggle.setAttribute("aria-label", "Cerrar menú");
-  } else {
-    navToggle.setAttribute("aria-label", "Abrir menú");
-  }
-})
+nav = document.getElementById("nav");
+
+
+function mostrar_menu(){
+
+  
+    nav.style.display = "block";
+}
+
+function ocultar_menu(){
+
+
+    nav.style.display = "none";
+}

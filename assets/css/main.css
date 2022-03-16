@@ -2,8 +2,8 @@
     margin:0;
     top:0;
     padding:0;
-    right: 0;
-    left: 0;
+    /* right: 0;
+    left: 0; */
     bottom:0;
 }
 html{
@@ -36,8 +36,8 @@ header{
     align-items: center;
 } */
 body{
-    background-color:  rgba(247, 138, 138, 0.87);
-    background-image: url("../img/img1.jpg ");
+    background-color:  rgba(250, 194, 211, 0.87);
+    /* background-image: url("../img/img1.jpg "); */
     background-repeat: no-repeat;
     background-size:cover;
 
@@ -87,6 +87,3 @@ body{
     background-image: radial-gradient(circle at 50% -20.71%, #ff7f85 0, #ff748c 8.33%, #ff6994 16.67%, #ff5d9c 25%, #ff52a4 33.33%, #ff47ad 41.67%, #f23cb5 50%, #e234be 58.33%, #cf32c8 66.67%, #b935d2 75%, #9f3bdb 83.33%, #7e42e5 91.67%, #514aed 100%);
 }
 
-.container_img h2{
-
-}
