@@ -4,23 +4,16 @@ $(document).ready(function (){
     }, 2000);
 });
 
-/*MENU*/
 
-document.getElementById("btn_menu").addEventListener("click", mostrar_menu);
+const navToggle = document.querySelector(".nav-toggle");
+const navMenu = document.querySelector(".nav-menu");
 
-document.getElementById("back_menu").addEventListener("click", ocultar_menu);
+navToggle.addEventListener("click", () => {
+  navMenu.classList.toggle("nav-menu_visible");
 
-nav = document.getElementById("nav");
-background_menu = document.getElementById("back_menu");
-
-function mostrar_menu(){
-
-    nav.style.right = "0px";
-    background_menu.style.display = "block";
-}
-
-function ocultar_menu(){
-
-    nav.style.right = "-250px";
-    background_menu.style.display = "none";
-}
+  if (navMenu.classList.contains("nav-menu_visible")) {
+    navToggle.setAttribute("aria-label", "Cerrar menú");
+  } else {
+    navToggle.setAttribute("aria-label", "Abrir menú");
+  }
+})

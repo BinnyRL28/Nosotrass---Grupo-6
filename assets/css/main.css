@@ -1,0 +1,92 @@
+*{
+    margin:0;
+    top:0;
+    padding:0;
+    right: 0;
+    left: 0;
+    bottom:0;
+}
+html{
+    align-items: center;
+    
+}
+
+header{
+    margin-bottom: 40px;
+}
+/* body{
+    height: 100%;
+    
+    background-attachment: fixed;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    outline: 2px solid black;
+    
+}
+.container-general{
+    top:60;
+    height: 100%;
+    background-color:  rgba(212, 18, 18, 0.781);
+    background-image: url("../img/img1.jpg ");
+    width: auto;
+    background-color: #ff748b98;
+    align-items: center;
+} */
+body{
+    background-color:  rgba(247, 138, 138, 0.87);
+    background-image: url("../img/img1.jpg ");
+    background-repeat: no-repeat;
+    background-size:cover;
+
+}
+
+.container-general{
+    background-color: #f594a4da;
+}
+
+#containercard{
+    background-color: rgb(70, 0, 49);
+    width: 100%;
+   
+}
+
+#login{
+    width: 170%;
+    margin:0;
+    padding: 0;
+}
+
+#container-fomularios{
+    
+    width: 100%;
+    height: 100%;
+    /* padding:0px; */
+    /* margin:0; */
+    /* outline: 1px solid yellow; */
+}
+
+#btnIngresoConEmail{
+    background: linear-gradient(to right, rgb(255, 1, 170), rgb(0, 255, 229));
+}
+
+#btnRegistroConEmail{
+    background: linear-gradient(to right, rgb(255, 1, 170), rgb(0, 255, 229));
+}
+
+#btnIngresoGmail{
+    background: linear-gradient(to right, rgb(255, 1, 170), rgb(0, 255, 229));
+}
+
+.container_img{
+    margin:0px;
+    width: 10%;
+    outline: 2px solid blue;
+    background-image: radial-gradient(circle at 50% -20.71%, #ff7f85 0, #ff748c 8.33%, #ff6994 16.67%, #ff5d9c 25%, #ff52a4 33.33%, #ff47ad 41.67%, #f23cb5 50%, #e234be 58.33%, #cf32c8 66.67%, #b935d2 75%, #9f3bdb 83.33%, #7e42e5 91.67%, #514aed 100%);
+}
+
+.container_img h2{
+
+}
