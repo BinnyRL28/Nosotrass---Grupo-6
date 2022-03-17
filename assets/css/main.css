@@ -36,10 +36,10 @@ header{
     align-items: center;
 } */
 body{
-    background-color:  rgba(250, 194, 211, 0.87);
-    /* background-image: url("../img/img1.jpg "); */
+    background-color: rgb(252, 237, 239);
+    background-image: url("https://www.telemundo.com/sites/nbcutelemundo/files/images/promo/article/2020/06/05/madre-hija-toallas-sanitarias.jpg");
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size:contain;
 
 }
 
@@ -48,13 +48,13 @@ body{
 }
 
 #containercard{
-    background-color: rgb(70, 0, 49);
+    background-color: rgb(202, 2, 112);
     width: 100%;
    
 }
 
 #login{
-    width: 170%;
+    width: 100%;
     margin:0;
     padding: 0;
 }
