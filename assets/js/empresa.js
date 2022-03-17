@@ -7,10 +7,10 @@ $(document).ready(function () {
         projectId: "nosotras-d301f",
         storageBucket: "nosotras-d301f.appspot.com",
         messagingSenderId: "388800746639",
-        appId: "1:388800746639:web:c6974b6699c9df47dc4cfa",
-        measurementId: "G-DJC9TZ7YSM"
+        appId: "1:388800746639:web:3ac28a8e304218cbdc4cfa",
+        measurementId: "G-WJXN75R1DP"
       };
-  
+    
     // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
   
@@ -51,9 +51,6 @@ $(document).ready(function () {
     //   $("#btnRegistroConEmail").addClass("d-none");
       $("#btnIngresoConEmail").addClass("d-none");
       $("#btnIngresoGmail").addClass("d-none");
-      $(".extras").removeClass("d-none");
-      $(".extras").addClass("d-block");
-          
     })
   
     // Si se completa el formulario de registro y se envia, registra al nuevo usuario y se guarda la sesion
@@ -68,14 +65,6 @@ $(document).ready(function () {
       //Campo Password
       var password = $("#ingresoPassword").val();
       // Metodo de firebase que permite registro de usarios con email
-      var rol = $("#rol").val();
-      // Metodo de firebase que permite registro de usarios con email
-
-      var nombreEmpresa = $("#nombreEmpresa").val();
-
-      var rubro = $("#rubro").val();
-
-      var tema = $("#tema").val();
 
       if (password.length<6) {
         alert(" ⚠️ Deben ser 6 carácteres como mínimo")
@@ -85,22 +74,10 @@ $(document).ready(function () {
         .createUserWithEmailAndPassword(email, password)
         .then(userCredential => {
 
-            var user = userCredential.user;
-			db.collection("usuarios").add({
-				nombre: fullName,
-				email: email,
-				id_auth: user.uid,
-                nombreEmpresa: nombreEmpresa,
-                rubro: rubro,
-                tema: tema,
-				rol: rol,
-			})
-
             console.log("Usuario Creado");
             addFullName(fullName);
           // limpiar formulario de registro
           $("#IngresoEmailForm").trigger("reset");
-          
         })
         .catch((error) => { // Esto permite capturar el error, se puede trabajar este catch con los codigos de error
           var errorCode = error.code;
@@ -113,10 +90,6 @@ $(document).ready(function () {
         });
   
     })
-    
-    
-   
-
     //MODIFICANDO ESTA PARTE
     // Acceso de usuarios
     // Ingresar por email
@@ -133,15 +106,16 @@ $(document).ready(function () {
       e.preventDefault();
       // Capturamos los datos enviados por el formulario de ingreso
       // Campo email
-      var email = $("#IngresoEmail").val();
+      var email = $("#ingresoEmail").val();
       // Campo Password
       var password = $("#ingresoPassword").val();
       // Metodo que permite ingreso de usarios con email
-      
-        auth.signInWithEmailAndPassword(email, password)
-          .then((userCredential) => {
+      try {
+        auth
+          .signInWithEmailAndPassword(email, password)
+          .then(userCredential => {
 
-            console.log("Usuario logueado con Email y contraseña");
+            console.log("Usuario logueado con Email y contraseña")
             // limpiar formualrio de ingreso
             $("#IngresoEmailForm").trigger("reset");
             $("#alert-login").hide();
@@ -152,19 +126,20 @@ $(document).ready(function () {
             var errorCode = error.code;
             var errorMessage = error.message;
             // Muestro en la consola el codigo de error y el mensaje de error
-            console.log(errorCode, errorMessage)
-            if (error.code == 'auth/argument-error' || errorCode == "auth/wronf-password") {
+            console.log(errorCode, errorMessage);
+          });
+      } catch (error) {
+        if (error.code == 'auth/argument-error') {
           $("#alert-login").removeClass("d-none");
           $("#alert-login").addClass("d-block");
-            }if (errorCode == "auth/user-not-found") {
+        }if (errorCode == "auth/user-not-found"){
             $("alert-login-2").removeClass("d-none");
             $("alert-login-2").addClass("d-block");
 
         }
-          });
-      
-
-    });
+      }
+  
+    })
   
   /*   $("#btnIngresoEmail").click(function (e) {
       e.preventDefault();
