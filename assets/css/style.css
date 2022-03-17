@@ -362,9 +362,7 @@ header{
 
 
 
-*{margin: 0;padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;}
+
     
     .contenedor{
         float:left;
@@ -424,6 +422,175 @@ header{
         max-width: 220px;
         margin: auto;
     }
+
+
+
+    /* A PARTIR DE AQUI ES LO DEL BOTON CONOCER MÁS */
+
+    button {
+        border: none;
+        background: #2B4C8C;
+        color: #fff;
+        margin:4px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        position: relative;
+        box-sizing: border-box;
+        transition: all 500ms ease; 
+        cursor:pointer;
+    
+      }
+      
+      /* /Animate-icon/ */
+      button.animate-icon{ 
+        padding: 10px 40px;  
+        overflow:hidden;
+      }
+      button.animate-icon:before {
+        content:"\260E";
+        position: absolute;
+        top: 6px;
+        left: -30px;
+        transition: all 300ms ease;
+      }
+      button.animate-icon:hover:before {
+        left: 12px;
+      }
+      /* /Ghost/ */
+      button.ghost:hover{
+        color: #2B4C8C;
+        border: #2B4C8C solid 1px;
+        background:#fff;
+      }
+      /* /fadeIn/ */
+      button.fade-in:hover{
+        opacity:0.5;
+      }
+    
+    /* /Grow In/ */
+    button.grow-in:hover{
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);  
+    }
+    
+    
+    
+    
+    
+    /* Font */
+    @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+    
+    /* Design */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+    
+    
+    .main{
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+        font-size: 24px;
+        font-weight: 400;
+        text-align: center;
+    }
+    
+    .img {
+      height: 260px;
+      width: 373px;
+      vertical-align: middle;
+    }
+    
+    .btn-card{
+      color: #fa4bab;
+      padding: 13px;
+      font-size: 14px;
+      text-transform: uppercase;
+      border-radius: 6px;
+      font-weight: 400;
+      display: block;
+      width: 100%;
+      cursor: pointer;
+      border: 1px solid #fa4bab;
+      background: transparent;
+    
+    }
+    
+    .btn-card:hover {
+      background-color: #fa4bab;
+      color:white;
+    }
+    
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .cards_item {
+      display: flex;
+      padding: 16px;
+    }
+    
+    @media (min-width: 640px) {
+      .cards_item {
+        width: 50%;
+      }
+    }
+    
+    @media (min-width: 897px) {
+      .cards_item {
+        width: 33.3333%;
+      }
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .card_content {
+      padding: 16px;
+      background: whitesmoke;
+      height: 100%;
+     
+    }
+    
+    .card_title {
+      color: #fa4bab;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0px;
+      margin: 0px;
+    }
+    
+    .card_text {
+      color: #696969;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: px;    
+      font-weight: 400;
+    }
+    .made_by{
+      font-weight: 400;
+      font-size: 13px;
+      margin-top: 35px;
+      text-align: center;
+    }
+
+
 
 
 
