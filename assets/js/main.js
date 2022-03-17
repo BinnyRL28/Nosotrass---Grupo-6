@@ -24,10 +24,10 @@ $(document).ready(function () {
     const db = firebase.firestore();
   
     // Inicializar Firestore (Base de datos)
-    const storage = firebase.storage();
+    // const storage = firebase.storage();
   
     // Inicializar Firestore (Base de datos)
-    const storageRef = storage.ref();
+    // const storageRef = storage.ref();
   
 
 
@@ -45,12 +45,15 @@ $(document).ready(function () {
 
   
     $("#registrate").click(function (e) {
+        console.log("hola");
       $("#btnRegistroConEmail").removeClass("d-none");
       $(".full-name-input").removeClass("d-none");
       $("#registrateAviso").addClass("d-none");
     //   $("#btnRegistroConEmail").addClass("d-none");
-      $("#btnIngresoConEmail").addClass("d-none");
-      $("#btnIngresoGmail").addClass("d-none");
+    $("#btnIngresoConEmail").removeClass("d-block");
+    $("#btnIngresoGmail").removeClass("d-block");
+      $("#btnIngresoConEmail").hide();
+      $("#btnIngresoGmail").hide();
       $(".extras").removeClass("d-none");
       $(".extras").addClass("d-block");
           
@@ -205,10 +208,10 @@ $(document).ready(function () {
         $("#login").hide();
         // mostramos el contenido
         $("#contenidoWeb").show();
-        obtienePost();
+        // obtienePost();
         $("#logout").show();
 
-        obtienePosts();
+        // obtienePosts();
         loadUserInfo();
       } else {
         $("#login").show()
@@ -228,256 +231,256 @@ $(document).ready(function () {
       }
     });
   
-     // Boton enviar formulario post
-     $("#btnSendPost").click(function (e) {
-      e.preventDefault();
-      // Capturo los datos enviados desde el formulario con id "postForm"
-      var mensaje = $("#postText").val();
+    //  // Boton enviar formulario post
+    //  $("#btnSendPost").click(function (e) {
+    //   e.preventDefault();
+    //   // Capturo los datos enviados desde el formulario con id "postForm"
+    //   var mensaje = $("#postText").val();
   
-      if (mensaje.length > 0) {
-        // Metodo de escritura para añadir elementos a la coleccion "post", 
-        // si la coleccion no existe, la crea implicitamente
-        var d = new Date();
-        var strDate = d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
-        var strHours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-        const file = document.querySelector("#postFile").files[0];
-        const user = firebase.auth().currentUser;
-        let cantidadLikes = 0;
+    //   if (mensaje.length > 0) {
+    //     // Metodo de escritura para añadir elementos a la coleccion "post", 
+    //     // si la coleccion no existe, la crea implicitamente
+    //     var d = new Date();
+    //     var strDate = d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
+    //     var strHours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    //     const file = document.querySelector("#postFile").files[0];
+    //     const user = firebase.auth().currentUser;
+    //     let cantidadLikes = 0;
   
-        db.collection("posts").add({
-          cantlikes: cantidadLikes,
-          mensaje: mensaje,
-          fecha: strDate,
-          hora: strHours,
-          date: datePostDB(),
-          orderDate : orderDate(),
-          idUser: user.uid ,
-          userName : user.displayName,
-          urltext: ""
+    //     db.collection("posts").add({
+    //       cantlikes: cantidadLikes,
+    //       mensaje: mensaje,
+    //       fecha: strDate,
+    //       hora: strHours,
+    //       date: datePostDB(),
+    //       orderDate : orderDate(),
+    //       idUser: user.uid ,
+    //       userName : user.displayName,
+    //       urltext: ""
   
-        })
-          .then((docRef) => {
-            console.log("Los datos se guardaron correctamente");
-            $("#postForm").trigger("reset");
-           var id = docRef.id;
-           if (file != null) {
-             const name = strDate + "-" + strHours + "-" + file.name;
-             agregarImagen(file, name, id);
-           }
-            obtienePosts();
-          })
-          .catch((error) => {
-            console.error("Error adding document: ", error);
-          });
-      } else {
-        alert('Favor completar todos los campos');
-      }
+    //     })
+    //       .then((docRef) => {
+    //         console.log("Los datos se guardaron correctamente");
+    //         $("#postForm").trigger("reset");
+    //        var id = docRef.id;
+    //        if (file != null) {
+    //          const name = strDate + "-" + strHours + "-" + file.name;
+    //          agregarImagen(file, name, id);
+    //        }
+    //         obtienePosts();
+    //       })
+    //       .catch((error) => {
+    //         console.error("Error adding document: ", error);
+    //       });
+    //   } else {
+    //     alert('Favor completar todos los campos');
+    //   }
   
-    });
+    // });
   
-    //Actualizar publicacion o posteo
-    $("#btnSavePost").click(function (e) {
-      e.preventDefault();
-      //Capturamos los datos enviados
-      var mensaje = $("#postText").val();
-      var id = $ ("#idPost").val();
+    // //Actualizar publicacion o posteo
+    // $("#btnSavePost").click(function (e) {
+    //   e.preventDefault();
+    //   //Capturamos los datos enviados
+    //   var mensaje = $("#postText").val();
+    //   var id = $ ("#idPost").val();
   
-      if (mensaje.length > 0) {
-        var d = new Date();
-        var strDate = d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
-        var strHours = d.getHours() + "-" + d.getMinutes() + "-" + d.getSeconds();
+    //   if (mensaje.length > 0) {
+    //     var d = new Date();
+    //     var strDate = d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
+    //     var strHours = d.getHours() + "-" + d.getMinutes() + "-" + d.getSeconds();
   
-        db.collection("posts").doc(id).update({
-          mensaje: mensaje,
-          fecha: strDate,
-          hora: strHours,
-          date: datePostDB(),
-          orderDate: orderDate(),
-        })
-        .then(() => {
-          console.log("Posteo actualizado correctamente");
-          $("postForm").trigger("reset");
-          obtienePosts();
+    //     db.collection("posts").doc(id).update({
+    //       mensaje: mensaje,
+    //       fecha: strDate,
+    //       hora: strHours,
+    //       date: datePostDB(),
+    //       orderDate: orderDate(),
+    //     })
+    //     .then(() => {
+    //       console.log("Posteo actualizado correctamente");
+    //       $("postForm").trigger("reset");
+    //       obtienePosts();
   
-          $("#btnSendPost").show();
-          $("#btnSavePost").hide();
+    //       $("#btnSendPost").show();
+    //       $("#btnSavePost").hide();
   
-        })
-        .catch((error) => {
-          console.log("El error en la actualización de los posteos es: ", error);
-        });
-      }else {
-        alert("Por favor completar todos los campos")
-      }
-    })
+    //     })
+    //     .catch((error) => {
+    //       console.log("El error en la actualización de los posteos es: ", error);
+    //     });
+    //   }else {
+    //     alert("Por favor completar todos los campos")
+    //   }
+    // })
   
-    //Va a mostrar los datos en la vista
-    function postList(data) {
+    // //Va a mostrar los datos en la vista
+    // function postList(data) {
       
-      const user = firebase.auth().currentUser;
-      if(data.length > 0) {
-        $("#postList").empty();
-        let html = "";
-        data.forEach(doc => {
-          contarLikes(doc.id)
-          var post = doc.data();
-          // contarLikes(doc.id)
-          // console.log("vallor de data", doc.id)
+    //   const user = firebase.auth().currentUser;
+    //   if(data.length > 0) {
+    //     $("#postList").empty();
+    //     let html = "";
+    //     data.forEach(doc => {
+    //       contarLikes(doc.id)
+    //       var post = doc.data();
+    //       // contarLikes(doc.id)
+    //       // console.log("vallor de data", doc.id)
          
          
-          var div = ``;
-          if (user.uid == post.idUser) {
-            function myf1() {
-              document.getElementById("btn-like").style.backgroundColor= "red";
-            }
+    //       var div = ``;
+    //       if (user.uid == post.idUser) {
+    //         function myf1() {
+    //           document.getElementById("btn-like").style.backgroundColor= "red";
+    //         }
         
-            function myf2() {
-              document.getElementById("btn-like").style.backgroundColor = "blue";
-            }
+    //         function myf2() {
+    //           document.getElementById("btn-like").style.backgroundColor = "blue";
+    //         }
           
-            console.log(post.cantlikes);
-            div = `
-            <div class="contenedorpostList" >
-              <div class="card-body card bg-dark text-white" style="margin-top:20px; border-radius:2rem; ">
-                <p class="fechaPost"> Publicado por ${post.userName}, el ${post.date}</p>
-                <p class="mensajePublicado">${post.mensaje}</p>
-                <img src="${post.urltext}" id="imagePost" class="mx-auto" style="align-item:center; justify-content:center; margin-top:20px; margin-bottom:20px;">
+    //         console.log(post.cantlikes);
+    //         div = `
+    //         <div class="contenedorpostList" >
+    //           <div class="card-body card bg-dark text-white" style="margin-top:20px; border-radius:2rem; ">
+    //             <p class="fechaPost"> Publicado por ${post.userName}, el ${post.date}</p>
+    //             <p class="mensajePublicado">${post.mensaje}</p>
+    //             <img src="${post.urltext}" id="imagePost" class="mx-auto" style="align-item:center; justify-content:center; margin-top:20px; margin-bottom:20px;">
                 
-                <button data-id="${doc.id}" class="btn btn-success btn-edit-post bi bi-pencil">
-                Editar
-                </button>
-                <button data-id="${doc.id}" class="btn btn-danger btn-delete-post bi bi-trash">
-                  Eliminar
-                </button>
-                <button data-id="${doc.id}" id="btn-like" class=" likes "  >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                    <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
-                  </svg>
-                  <!--${cantidadLikes}--> Me gusta
-                </button>
-                <!-- <span>likes ${cantidadLikes}</span> -->
-              </div>
-            </div>
-            `;
-          } else {
-            div = `
-            <div class="contenedorpostList" style="">
-              <div class="card-body card bg-dark text-white mx-auto" style="margin-top:20px; border-radius:2rem; ">
-                <p class="fechaPost">  Publicado por ${post.userName}, el ${post.date}</p>
-                <p class="mensajePublicado">${post.mensaje}</p>
-                <img src="${post.urltext}" id="imagePost" class="mx-auto" style="align-item:center; justify-content:center; margin-top:20px; margin-bottom:20px;">
+    //             <button data-id="${doc.id}" class="btn btn-success btn-edit-post bi bi-pencil">
+    //             Editar
+    //             </button>
+    //             <button data-id="${doc.id}" class="btn btn-danger btn-delete-post bi bi-trash">
+    //               Eliminar
+    //             </button>
+    //             <button data-id="${doc.id}" id="btn-like" class=" likes "  >
+    //               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+    //                 <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+    //               </svg>
+    //               <!--${cantidadLikes}--> Me gusta
+    //             </button>
+    //             <!-- <span>likes ${cantidadLikes}</span> -->
+    //           </div>
+    //         </div>
+    //         `;
+    //       } else {
+    //         div = `
+    //         <div class="contenedorpostList" style="">
+    //           <div class="card-body card bg-dark text-white mx-auto" style="margin-top:20px; border-radius:2rem; ">
+    //             <p class="fechaPost">  Publicado por ${post.userName}, el ${post.date}</p>
+    //             <p class="mensajePublicado">${post.mensaje}</p>
+    //             <img src="${post.urltext}" id="imagePost" class="mx-auto" style="align-item:center; justify-content:center; margin-top:20px; margin-bottom:20px;">
                 
-                <button data-id="${doc.id}" id="btn-like" class=" likes">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                    <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
-                  </svg>
-                  <!--${post.cantlikes}--> Me gusta
-                </button>
-                <!-- <span>likes ${cantidadLikes}</span> -->
-              </div>
-            </div>
-            `;
-          }
-          html += div;
-        });
+    //             <button data-id="${doc.id}" id="btn-like" class=" likes">
+    //               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+    //                 <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+    //               </svg>
+    //               <!--${post.cantlikes}--> Me gusta
+    //             </button>
+    //             <!-- <span>likes ${cantidadLikes}</span> -->
+    //           </div>
+    //         </div>
+    //         `;
+    //       }
+    //       html += div;
+    //     });
 
         
           
-          // let boton = document.getElementById("btn-like");
-          // boton.addEventListener("click", myf1);
-          // boton.addEventListener("click", myf2);
-          // boton.addEventListener("mouseover", function(){boton.textContent="¡Hola!"});
-          // boton.addEventListener("mouseout", function(){boton.textContent="No te vayas"});
+    //       // let boton = document.getElementById("btn-like");
+    //       // boton.addEventListener("click", myf1);
+    //       // boton.addEventListener("click", myf2);
+    //       // boton.addEventListener("mouseover", function(){boton.textContent="¡Hola!"});
+    //       // boton.addEventListener("mouseout", function(){boton.textContent="No te vayas"});
       
       
-          // function myf1() {
-          //   document.getElementById("btn-like").style.backgroundColor= "red";
-          // }
+    //       // function myf1() {
+    //       //   document.getElementById("btn-like").style.backgroundColor= "red";
+    //       // }
       
-          // function myf2() {
-          //   document.getElementById("btn-like").style.backgroundColor = "blue";
-          // }
+    //       // function myf2() {
+    //       //   document.getElementById("btn-like").style.backgroundColor = "blue";
+    //       // }
         
 
         
         
-        $("#postList").append(html);
-        var btnsEdit = document.querySelectorAll(".btn-edit-post");
-        btnsEdit.forEach(btn => {
-          btn.addEventListener("click", (e) => {
-            var id = e.target.dataset.id;
-            //Se le pasa el identificador a una funcion para actulizar dicho documento
-            obtienePost(id);
-          })
-        })
+    //     $("#postList").append(html);
+    //     var btnsEdit = document.querySelectorAll(".btn-edit-post");
+    //     btnsEdit.forEach(btn => {
+    //       btn.addEventListener("click", (e) => {
+    //         var id = e.target.dataset.id;
+    //         //Se le pasa el identificador a una funcion para actulizar dicho documento
+    //         obtienePost(id);
+    //       })
+    //     })
         
-        var btnsDelete = document.querySelectorAll(".btn-delete-post");
-        btnsDelete.forEach(btn => {
+    //     var btnsDelete = document.querySelectorAll(".btn-delete-post");
+    //     btnsDelete.forEach(btn => {
   
-          btn.addEventListener("click", (e) => {
-            var id = e.target.dataset.id;
-          deletePost(id);
-          })
-        })
+    //       btn.addEventListener("click", (e) => {
+    //         var id = e.target.dataset.id;
+    //       deletePost(id);
+    //       })
+    //     })
   
-        var btnsLike = document.querySelectorAll(".likes");
-        btnsLike.forEach(btn => {
-          btn.addEventListener("click", (e) => {
-            console.log(e);
-            var id = e.target.dataset.id;
-          agregarLike(id);
-          })
-        })
-      }
-    }
+    //     var btnsLike = document.querySelectorAll(".likes");
+    //     btnsLike.forEach(btn => {
+    //       btn.addEventListener("click", (e) => {
+    //         console.log(e);
+    //         var id = e.target.dataset.id;
+    //       agregarLike(id);
+    //       })
+    //     })
+    //   }
+    // }
   
-    // Consulta y ordena los post del mas nuevo al mas antiguo
-    function obtienePosts() {
-      db.collection("posts").orderBy('orderDate', 'desc').get().then((querySnapshot) => {
-            postList(querySnapshot.docs);
-      })
-  
-  
-      // fireSQL.query("SELECT * FROM posts inner join likes on likes.idPost = posts.id group by likes.idPost")
-  
-    };
-  
-    // Consulta y ordena los post del mas nuevo al mas antiguo
-    // function obtienePost() {
-    //   db.collection("posts").get().then((snapshot) => {
-    //     postList(snapshot.docs);
+    // // Consulta y ordena los post del mas nuevo al mas antiguo
+    // function obtienePosts() {
+    //   db.collection("posts").orderBy('orderDate', 'desc').get().then((querySnapshot) => {
+    //         postList(querySnapshot.docs);
     //   })
+  
+  
+    //   // fireSQL.query("SELECT * FROM posts inner join likes on likes.idPost = posts.id group by likes.idPost")
+  
     // };
   
-    //Funcion que actuliza un posteo
-    function obtienePost(id) {
-      db.collection("posts").doc(id).get().then((doc) => {
-        var post = doc.data();
-        $("#postText").val(post.mensaje);
-        $("#idPost").val(id);
-        $("#btnSendPost").hide();
-        $("#btnSavePost").removeClass("d-none");
-        $("#btnSavePost").show;
+    // // Consulta y ordena los post del mas nuevo al mas antiguo
+    // // function obtienePost() {
+    // //   db.collection("posts").get().then((snapshot) => {
+    // //     postList(snapshot.docs);
+    // //   })
+    // // };
   
-      }).catch((error) =>{
-        console.log("El error es: ", error);
-      })
-    }
+    // //Funcion que actuliza un posteo
+    // function obtienePost(id) {
+    //   db.collection("posts").doc(id).get().then((doc) => {
+    //     var post = doc.data();
+    //     $("#postText").val(post.mensaje);
+    //     $("#idPost").val(id);
+    //     $("#btnSendPost").hide();
+    //     $("#btnSavePost").removeClass("d-none");
+    //     $("#btnSavePost").show;
+  
+    //   }).catch((error) =>{
+    //     console.log("El error es: ", error);
+    //   })
+    // }
   
   
     
   
-    //Funcion para el eliminar el post
-    function deletePost(id) {
-      db.collection("posts").doc(id).delete().then(() => {
-        // Si se elimina el post
-        obtienePosts();
-        window.location.reload();
-      }).catch((error) => {
-        console.log("Error al eliminar el posteo", error)
-      })
+    // //Funcion para el eliminar el post
+    // function deletePost(id) {
+    //   db.collection("posts").doc(id).delete().then(() => {
+    //     // Si se elimina el post
+    //     obtienePosts();
+    //     window.location.reload();
+    //   }).catch((error) => {
+    //     console.log("Error al eliminar el posteo", error)
+    //   })
   
-    }
+    // }
   
     //Funcion que permite añadir url de la imagen al registro recien creado en firestore
     function agregarImagen(file, name, id){
@@ -525,7 +528,7 @@ $(document).ready(function () {
     }
   
     
-  
+  /* 
     //Funcion para obtener el dia y la hora en español
      const datePostDB = () => {
       const datePost = {
@@ -556,7 +559,7 @@ $(document).ready(function () {
       const second = `0${dateNow.getSeconds()}`.slice(-2);
       return parseInt(`${year}${month}${day}${hour}${minute}${second}`, 0);
     };
-  
+   */
   
     // Metodo que sirve para mostrar los países en la tabla
   //   function postList(data) {
@@ -582,6 +585,7 @@ $(document).ready(function () {
   
     function loadUserInfo(){
       const user = firebase.auth().currentUser;
+      const rol = $("#rol").val();
       let html = "";
       if (user !== null ) {
         const displayName = user.displayName;
@@ -600,6 +604,7 @@ $(document).ready(function () {
           <div class="card-body text-center " >
           <div style="align-items:center; justify-content:center; ">
             <div id="contenedorUser" class="text-center;">
+              <h2 style="monospace">${rol}</h2>
               <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 100px;"  
             </div>
             <div id="userInfo" class="text-center" >
@@ -626,26 +631,26 @@ $(document).ready(function () {
       });
     }
   
-    async function agregarLike(id){
-      var espuesta =await userTieneLike(id);
+    // async function agregarLike(id){
+    //   var espuesta =await userTieneLike(id);
        
-      if(tieneLike == 1){
-        console.log("NO PUEDE VOLVER A DAR LIKE");
-      }else {
-        const user = firebase.auth().currentUser;
-        const idUser =  user.uid;
-        const like = $(".likes");
-        db.collection("likes").add({
-          User: idUser,
-          Fecha: '',
-          idPost: id,
-        }).then(() => {
-          // contarLikes(id)
-        // obtieneLikes();
-        })
-      }
+    //   if(tieneLike == 1){
+    //     console.log("NO PUEDE VOLVER A DAR LIKE");
+    //   }else {
+    //     const user = firebase.auth().currentUser;
+    //     const idUser =  user.uid;
+    //     const like = $(".likes");
+    //     db.collection("likes").add({
+    //       User: idUser,
+    //       Fecha: '',
+    //       idPost: id,
+    //     }).then(() => {
+    //       // contarLikes(id)
+    //     // obtieneLikes();
+    //     })
+    //   }
       
-    }
+    // }
   
   
       
