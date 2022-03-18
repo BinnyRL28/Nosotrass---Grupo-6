@@ -230,10 +230,10 @@ $(document).ready(function () {
     });
 
 
-    $("#añadirFormulario").click(function(e){
-        $("#containerBtnFomrulario").removeClass("d-none");
-        $("#containerBtnFomrulario").addClass("d-block");
-    });
+    // $("#añadirFormulario").click(function(e){
+    //     $("#containerBtnFomrulario").removeClass("d-none");
+    //     $("#containerBtnFomrulario").addClass("d-block");
+    // });
 //ESTA PARTE ESTÁ INCOMPLETA Y NO FUNCIONA LO DEL LOGIN SI DESCOMENTO ESTO
 
 
