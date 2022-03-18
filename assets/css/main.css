@@ -37,11 +37,15 @@ header{
 } */
 body{
     background-color: rgb(252, 237, 239);
-    background-image: url("https://www.telemundo.com/sites/nbcutelemundo/files/images/promo/article/2020/06/05/madre-hija-toallas-sanitarias.jpg");
+    background-image: url("https://us.123rf.com/450wm/xrey/xrey1510/xrey151000008/47187919-rosa-sfondo-sfocato-in-full-4k-risoluzione.jpg");
+    background-size: cover;
     background-repeat: no-repeat;
-    background-size:contain;
 
 }
+
+/* #container-fomularios{
+    background-image: url("https://www.telemundo.com/sites/nbcutelemundo/files/images/promo/article/2020/06/05/madre-hija-toallas-sanitarias.jpg");
+} */
 
 .container-general{
     background-color: #f594a4da;

@@ -216,12 +216,47 @@ $(document).ready(function () {
     });
 
     function setupFormulario (data) {
-        $("#dataPaises").empty();
+        $("#dataFormato").empty();
         if (data.lenght > 0) {
             let html = '';
             data.forEach(doc => {
+                const topic = doc.data();
+                const tr = `
                 
-            })
+                <div class="container mt-5" id="container-fomularios">
+                    <div class="container  h-100" id="login">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                                <div class="card bg-pink text-white" id="containercard" style="border-radius: 1rem;">
+                                    <div class="card-body p-5 text-center">
+                                        <div class="mb-md-5 mt-md-4">
+                                            <h2 class="text-center d-6 upercase">${titulo}</h2>
+                                            <hr>
+                                            <br>
+                                            <div> 
+                                            <p>${texto}</p>
+                                            </div>
+                                            <br>
+                                            <div class="w-100"> 
+                                            <img src="${imagen}">
+                                            </div>
+                                            <hr>
+                                            <br>
+                                            <h3>Links<h3>
+                                            <button class="btn btn-outline-dark"><a href="${link}">${link}</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div>
+                    </div>
+                </div>
+
+                `;
+
+                html += tr;
+            });
+            $("#dataFormato").append(html);
         }
     }
 
@@ -490,13 +525,18 @@ $(document).ready(function () {
   
         html =
           `
-          <div class= "col-md-3">
-            <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 100px;">
-          </div>
-          <div id="userDatos" class="col-md-9">
-            <h3>${displayName}</h3>
-            <h4>${email}</h4>
-          </div>
+          <div class="card-body text-center " >
+            <div style="align-items:center; justify-content:center; ">
+              <div id="contenedorUser" class="text-center;">
+                <h2 style="monospace">${rol}</h2>
+                <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width:  200px;"  
+              </div>
+              <div id="userInfo" class="text-center" >
+                <h3>${displayName}</h3>
+                <h4>${email}</h4>
+              </div>
+              </div>
+            </div>
         `;
   
         $("#userInfo").append(html);

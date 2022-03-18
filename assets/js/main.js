@@ -602,8 +602,8 @@ $(document).ready(function () {
             <div class="card-body text-center " >
             <div style="align-items:center; justify-content:center; ">
               <div id="contenedorUser" class="text-center;">
-                <h2 style="monospace">${rol}</h2>
-                <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 100px;"  
+                <h2 style="font-family: monospace; font-weight: 600;">${rol}</h2>
+                <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 200px;"  
               </div>
               <div id="userInfo" class="text-center" >
                 <h3>${displayName}</h3>

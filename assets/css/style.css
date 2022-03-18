@@ -474,7 +474,18 @@ header{
         -ms-transform: scale(1.2);
         transform: scale(1.2);  
     }
+
+    #btn_close{
+        display:none;
+    }
     
+    .boton-top{
+        z-index: 10;
+    }
+    
+    #userProfile{
+        background-color:#830048;
+    }
     
     
     
@@ -759,4 +770,16 @@ header{
     .menu #btn_menu:hover{
         background: rgba(255, 255, 255, 0.4);
     }
+
+    .menu #btn_close{
+        display:block;
+    }
+}
+
+.menu #btn_close{
+    display:none;
+}
+
+.boton-top{
+    z-index: 10;
 }

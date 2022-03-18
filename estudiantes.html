@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/footer.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+
 
     <title>Nosotras</title>
 </head>
@@ -28,430 +28,681 @@
             <i class="fas fa-bars" id="btn_menu"></i>
 
             <nav id="nav">
-                <button type="button" id="btn_close" class="btn-close position-absolute end-0 me-5" aria-label="Close"></button>
+                <button type="button" id="btn_close" class="btn-close position-absolute end-0 me-5"
+                    aria-label="Close"></button>
                 <img src="assets/img/NuevoLogo.png" alt="">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="index.html#sectionCursos">Material Informativo</a></li>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button id="btn-group1" type="button" class="btn btn-empresa"><a href="empresa.html" >Empresa</a></button>
-                        <button id="btn-group2" type="button" class="btn btn-estudiante"><a href="estudiantes.html" >Estudiante</a></button>
+                        <button id="btn-group1" type="button" class="btn btn-empresa"><a
+                                href="empresa.html">Empresa</a></button>
+                        <button id="btn-group2" type="button" class="btn btn-estudiante"><a
+                                href="estudiantes.html">Estudiante</a></button>
                     </div>
                     <div class="d-flex" style="margin-left: 20px;">
                         <button id="logout" class="btn bg-danger text-white btn-outline-danger ">Salir</button>
-                      </div>
+                    </div>
                 </ul>
 
-                
+
             </nav>
         </div>
     </div>
 </header>
 
-<body >
+<body>
 
     <div class="container_img">
         <h2>NOSOTRAS</h2>
         <img scr="" alt="">
     </div>
-     
+
     <div class="container mt-5" id="container-fomularios">
         <div class="container  h-100" id="login">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-              <div class="card bg-pink text-white" id="containercard" style="border-radius: 1rem;">
-                <div class="card-body p-5 text-center">
-                  <div class="mb-md-5 mt-md-4">
-                    <h2 class="fw-bold mb-2 text-uppercase">Login Estudiante</h2>
-                    <p class="text-white-50 mb-5">
-                      Por favor, ingrese su email y contraseña.
-                    </p>
-                    <div id="alert-login" 
-                    class="alert alert-danger d-none" 
-                    role="alert">
-                      Email y contraseña incorrectos.
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-pink text-white" id="containercard" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-md-5 mt-md-4">
+                                <h2 class="fw-bold mb-2 text-uppercase">Login Estudiante</h2>
+                                <p class="text-white-50 mb-5">
+                                    Por favor, ingrese su email y contraseña.
+                                </p>
+                                <div id="alert-login" class="alert alert-danger d-none" role="alert">
+                                    Email y contraseña incorrectos.
+                                </div>
+
+                                <div id="alert-login-2" class="alert alert-danger d-none" role="alert">
+                                    Email y contraseña no se sabe cuando tratran de registrdos en el odicequadr
+                                </div>
+
+                                <div id="alert-login-registro" class="alert alert-danger d-none" role="alert">
+                                    Email ya se encuentra registrado, favor utilizar otro.
+                                </div>
+
+                                <form id="IngresoEmailForm" action="">
+                                    <div class="form-outline form-white mb-4 full-name-input d-none">
+                                        <input type="text" id="ingresoFullName" class="form-control form-control-lg" />
+                                        <label class="form-label" for="ingresoFullName">Nombre Completo</label>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4 ">
+                                        <input type="email" id="IngresoEmail" class="form-control form-control-lg" />
+                                        <label class="form-label" for="IngresoEmail">Email</label>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="password" id="ingresoPassword"
+                                            class="form-control form-control-lg" />
+                                        <label class="form-label" for="ingresoPassword">Contraseña</label>
+                                    </div>
+
+                                    <input type="hidden" id="rol" value="ESTUDIANTE" />
+
+                                    <input type="hidden" id="nombreEmpresa" value="">
+
+                                    <input type="hidden" id="rubro" value="">
+
+                                    <input type="hidden" id="tema" value="">
+
+
+
+                                    <!-- Acomodado hasta aquí -->
+
+                                    <button class="btn btn-outline-light btn-lg px-5 w-100" type="submit"
+                                        id="btnIngresoConEmail">
+                                        <i class="bi bi-person-cirlce">
+                                            <span class="ms-3"> Ingresar </span></i>
+
+                                    </button>
+
+                                    <button class="btn btn-outline-light btn-lg px-5 d-none w-100" type="submit"
+                                        id="btnRegistroConEmail">
+                                        <i class="bi bi-person-plus">
+                                            <span class="ms-3"> Registrar </span></i>
+
+                                    </button>
+                                </form>
+
+                                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                    <button class="btn btn-outline-light btn-lg px-5 w-100 " id="btnIngresoGmail">
+                                        <span>Ingresar con <i class="fa fa-google"></i> </span>
+
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="registrateAviso">
+                                <p class="mb-0">
+                                    No tienes una cuenta
+                                    <a href="#!" id="registrate" class="text-white-50 fw-bold">Registrate</a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div id="alert-login-2" 
-                    class="alert alert-danger d-none" 
-                    role="alert">
-                      Email y contraseña no se sabe cuando tratran de registrdos en el odicequadr
-                    </div>
-
-                    <div id="alert-login-registro" 
-                    class="alert alert-danger d-none" 
-                    role="alert">
-                      Email ya se encuentra registrado, favor utilizar otro.
-                    </div>
-
-                    <form id="IngresoEmailForm" action="">
-                      <div class="form-outline form-white mb-4 full-name-input d-none">
-                        <input
-                          type="text"
-                          id="ingresoFullName"
-                          class="form-control form-control-lg"
-                        />
-                        <label class="form-label" for="ingresoFullName">Nombre Completo</label>
-                      </div>
-
-                      <div class="form-outline form-white mb-4 ">
-                        <input
-                          type="email"
-                          id="IngresoEmail"
-                          class="form-control form-control-lg"
-                        />
-                        <label class="form-label" for="IngresoEmail">Email</label>
-                      </div>
-  
-                      <div class="form-outline form-white mb-4">
-                        <input
-                          type="password"
-                          id="ingresoPassword"
-                          class="form-control form-control-lg"
-                        />
-                        <label class="form-label" for="ingresoPassword"
-                          >Contraseña</label
-                        >
-                      </div>
-
-                        <input
-                          type="hidden"
-                          id="rol"
-                          value="ESTUDIANTE"
-                        />
-
-                        <input type="hidden"
-                      id="nombreEmpresa"
-                      value="">
-
-                      <input type="hidden"
-                      id="rubro"
-                      value="">
-
-                      <input type="hidden"
-                      id="tema"
-                      value="">
-                        
-
-
-                      <!-- Acomodado hasta aquí -->
-  
-                      <button
-                        class="btn btn-outline-light btn-lg px-5 w-100"
-                        type="submit"
-                        id="btnIngresoConEmail"
-                      >
-                      <i class="bi bi-person-cirlce" >
-                          <span class="ms-3"> Ingresar </span></i>
-                       
-                      </button>
-  
-                      <button
-                        class="btn btn-outline-light btn-lg px-5 d-none w-100"
-                        type="submit"
-                        id="btnRegistroConEmail"
-                      >
-                      <i class="bi bi-person-plus" >
-                      <span class="ms-3"> Registrar </span></i>
-
-                      </button>
-                    </form>
-  
-                    <div
-                      class="d-flex justify-content-center text-center mt-4 pt-1"
-                    >
-                      <button
-                        class="btn btn-outline-light btn-lg px-5 w-100 "
-                        id="btnIngresoGmail"
-                      >
-                            <span>Ingresar con  <i class="fa fa-google"></i> </span>
-                                                
-                      </button>
-                    </div>
-                  </div>
-  
-                  <div id="registrateAviso">
-                    <p class="mb-0">
-                      No tienes una cuenta
-                      <a href="#!" id="registrate" class="text-white-50 fw-bold">Registrate</a>
-                    </p>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-        
-
-    <div id="contenidoWeb" class="row">
-        <div id="userProfile" class="card bg-dark text-white colg-lg-5 col-md-12 mx auto">
-
-        
-
-        <div id="userInfo" class="my-auto">
-
-        </div>
         </div>
 
-  
-        <div class="card bg-dark text-white mx-auto d-none"  style="border-radius: 1rem; width: 800px;">
-          <div class="card-body">
-            <form id="postForm"action="">
-              
-              <h5>Escribe tu mensaje</h5>
-              <label class="form-label" for="postText">Mensaje</label>
-              <div class="form-outline form-white mb-4">
-                <textarea class="form-control form-control-lg" id="postText" rows="3"></textarea>
-              </div>
-              <button id="btnSendPost" class="btn btn-outline-light btn-lg px-5" type="submit">Postear</button>
-            </form>
-          </div>
-        </div>
-        <div id="postList">
-          
-        </div>
-      </div>
 
-      
-
-<!------ Include the above in your HEAD tag ---------->
+        <div id="contenidoWeb" class="row">
+            <div id="userProfile" class="card  text-white colg-lg-5 col-md-12 mx auto">
 
 
-<footer id="dk-footer" class="dk-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-4">
-                    <div class="dk-footer-box-info">
-                        <a href="index.html" class="footer-logo">
-                            <img src="assets/img/Logo2.jpg" style="border-radius: 5rem; width: 30%;" alt="footer_logo" class="img-fluid">
-                        </a>
-                        <p class="footer-info-text">
-                           La familia Nosotras está pendiente de ti y  que tomes con calma  e infrmada tu etapa de crecciemiento y tus cuidados.
-                        </p>
-                        <div class="footer-social-link">
-                            <h3>Siguenos</h3>
-                            <ul>
-                                <li>
-                                    <a href="https://www.facebook.com/nosotrasPeru">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/YoAmoNosotras">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.nosotrasonline.com.pe">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://vm.tiktok.com/">
-                                        <i class="fab fa-tiktok"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/nosotrasperu/">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- End Social link -->
-                    </div>
-                    <!-- End Footer info -->
-                    <div class="footer-awarad">
-                        <img src="images/icon/best.png" alt="">
-                        <p>La mejor marca para cuidado femenino 2022</p>
-                    </div>
+
+                <div id="userInfo" class="my-auto">
+
                 </div>
-                <!-- End Col -->
-                <div class="col-md-12 col-lg-8">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="contact-us">
-                                <div class="contact-icon">
-                                    <i class="fa fa-map-o" aria-hidden="true"></i>
+            </div>
+
+
+            <section id="articulos-menstruacion">
+
+                <div class="main">
+                    <br>
+                    <h1 class="text-uppercase text-dark" style="font-weight:600;">Menstruación</h1>
+                    <br>
+                    <ul class="cards">
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://media.istockphoto.com/photos/concept-polycystic-ovary-syndrome-pcos-women-reproductive-system-picture-id1209589161?k=20&m=1209589161&s=612x612&w=0&h=8-x1ATGxxBqHQHdR43Er77pjAs5KEIJrn9fX8kzsw-0=">
                                 </div>
-                                <!-- End contact Icon -->
-                                <div class="contact-info">
-                                    <h3>Dirección</h3>
-                                    <p>5353 Road Avenue</p>
+                                <div class="card_content">
+                                    <h2 class="card_title">Conoce que es ovario poliquistico y sindrome de ovario
+                                        poliquistico
+                                        (SOP)</h2>
+                                    <p class="card_text"> Los ovarios poliquísticos y síndrome de ovario poliquístico
+                                        son dos
+                                        condiciones
+                                        totalmente diferentes pero que a cualquiera de Nosotras le puede suceder.
+                                        Por eso, Sophi nos va hablar de las diferencias entre ellos, síntomas,
+                                        qué tan usuales son y lo más importante, cómo tratarlos. </p>
+                                    <button  class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/menstruacion_sop.html">Ver más</a>
+                                        </button>
+                                   
                                 </div>
-                                <!-- End Contact Info -->
                             </div>
-                            <!-- End Contact Us -->
-                        </div>
-                        <!-- End Col -->
-                        <div class="col-md-6">
-                            <div class="contact-us contact-us-last">
-                                <div class="contact-icon">
-                                    <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                        </li>
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://mejorconsalud.com/wp-content/uploads/2019/07/mujer-con-acne.jpg">
                                 </div>
-                                <!-- End contact Icon -->
-                                <div class="contact-info">
-                                    <h3>0800 7 1218</h3>
-                                    <p>Contáctanos</p>
+                                <div class="card_content">
+                                    <h2 class="card_title">Skincare y Hormonas: ¿por qué cambia mi piel durante el ciclo
+                                        menstrual?</h2>
+                                    <p class="card_text">A la mayoría de Nosotras, nos suceden cambios en la piel en
+                                        cada una de las etapas
+                                        del ciclo menstrual, pero deben entender que es algo que es completamente
+                                        natural que ocurra. Sophi
+                                        nos explica en este video el porqué de este cambio y lo mejor de todo, ¡nos dará
+                                        unos tips para cuidar la piel!
+
+                                    </p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/menstruación_skincare.html">Ver más</a></button>
                                 </div>
-                                <!-- End Contact Info -->
                             </div>
-                            <!-- End Contact Us -->
+                        </li>
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://www.menudospeques.net/images/stories/salud/periodos-irregulares-flujo.jpg">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">Signos de una menstruación anormal</h2>
+                                    <p class="card_text">¡¡Hola!! Hoy vamos a aprender sobre cuáles son las señales de
+                                        tu cuerpo que te indican que puedes
+                                        estar teniendo un problema con tu ciclo menstrual. Por ejemplo una menstruación
+                                        anormal puede ocurrir cuando
+                                        el sangrado dura más de 7 días o es muy abundante (¿Quieres descubrirl más? ¡Te
+                                        lo contamos todo!</p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/menstruacion_signos-menstruacion-anormal.html">Ver más</a></button>
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+            </section>
+
+
+            <section id="educación-sexual">
+
+                <div class="main">
+                    <br>
+                    <h1 class="text-uppercase text-dark" style="font-weight:600;">Educación Sexual</h1>
+                    <br>
+                    <ul class="cards">
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://t1.uc.ltmcdn.com/es/posts/8/3/4/se_puede_tomar_la_pastilla_del_dia_despues_tomando_anticonceptivos_49438_600.jpg">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">¿Qué es el postday y cómo funciona? Aquí te lo contamos</h2>
+                                    <p class="card_text"> La pastilla del día después es un método para prevenir el
+                                        embarazo (anticonceptivo)
+                                        de emergencia. El propósito de los anticonceptivos de emergencia es prevenir el
+                                        embarazo después de
+                                        que una mujer tuvo relaciones sexuales sin protección o cuando ha fallado el
+                                        método anticonceptivo
+                                        que utiliza. </p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/es_postday.html">Ver más</a></button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://s1.eestatic.com/2021/12/01/sociedad/consumo/631448133_216917872_1024x576.jpg">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">¿Cómo cuidarse con preservativo? Todo lo que tienes que saber
+                                    </h2>
+                                    <p class="card_text">
+                                        El preservativo es el único método anticonceptivo que previene los embarazos no
+                                        planificados y las infecciones
+                                        de transmisión sexual (ITS). En este artículo te quiero contar cómo usar
+                                        correctamente el preservativo
+                                        (o condón masculino) y algunos tips para evitar rupturas o accidentes por un uso
+                                        incorrecto del mismo.
+                                    </p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/es_cuidarse-con-preservativo.html">Ver más</a></button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://urologoenpachuca.com/wp-content/uploads/2020/06/Especialista-en-ETS-en-Pachuca-de-Soto.jpg">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">10 mitos de las ETS</h2>
+                                    <p class="card_text">Las enfermedades de transmisión sexual (ETS) son comunes y, en
+                                        su mayoría, tratables.
+                                        El mayor riesgo en este tema es la desinformación, porque sigue siendo tabú y no
+                                        sabemos cómo hablar
+                                        de ellas en nuestros espacios seguros de aprendizaje como el hogar y la escuela.
+
+                                        Por eso, en Nosotras queremos que aprendas los 10 mitos más comunes de las ETS
+                                    </p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/es_mitos-ets.html">Ver más</a></button>
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+            </section>
+
+            <section id="articulos-cuidado">
+
+                <div class="main">
+                    <br>
+                    <h1 class="text-uppercase text-dark" style="font-weight:600;">Cuidado íntimo</h1>
+                    <br>
+                    <ul class="cards">
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://static.wixstatic.com/media/a67f38_85d6daf12d3144369f3363dce82e5271~mv2.png/v1/fit/w_1000%2Ch_667%2Cal_c/file.png">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">¿Cómo cuidar tu Zona V? </h2>
+                                    <p class="card_text"> ¡Te compartimos de la mano del Dr. Juan Manuel Serini
+                                        todo lo que tienes que saber para cuidar tu salud genital!
+                                        El cuidado de la salud vaginal y vulvar, es una parte muy importante en el
+                                        cuidado de
+                                        la salud de la mujer. Frecuentemente se puede pensar que los genitales requieren
+                                        del mismo tipo de higiene que cualquier otra parte del cuerpo, y este error
+                                        conlleva a padecer infecciones genitales. </p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/cuidado-intimo_cuidar-zona-v.html">Ver más</a></button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://t1.os.ltmcdn.com/es/posts/1/4/0/vaginosis_bacteriana_sintomas_causas_y_tratamiento_19041_600.jpg">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">¡Alergias en la Zona V! Molestias que se pueden presentar con
+                                        el tiempo</h2>
+                                    <p class="card_text">Estamos seguras de que ya has escuchado hablar sobre las
+                                        alergias e infecciones vaginales, ¿pero sabes cuáles son sus causas?,
+                                        ¿conoces los síntomas? Aquí queremos contarte sobre las más comunes, para que
+                                        estés enterada de este
+                                        tema que ¡afecta a muchísimas mujeres!
+
+                                    </p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/cuidado-intimo_alergias-zona-v.html">Ver más</a></button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://images.ctfassets.net/o65uf8qogksw/5A6RmDmstEcbBn8NLCk1KT/522ee468611788a09ffcb18c4e60f3a9/ph-de-la-mujer-prev.png">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title"> pH de la Zona V </h2>
+                                    <p class="card_text">¡¡Hola!! Como ya sabes a Nosotras nos encanta mantenerte
+                                        informada y educada, hoy no es la excepción
+                                        porque te hablaremos sobre todo lo que tienes que saber acerca del pH de tu zona
+                                        íntima, ¿el qué? ¡el pH! Sí, puede sonarte familiar, y seguramente es porque en
+                                        el colegio, en tu clase de química lo escuchaste, y hoy nos toca a Nosotras
+                                        contarte un poco más sobre el pH vaginal.</p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/cuidado-intimo_ph-zona-v.html">Ver más</a></button>
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+            </section>
+
+            <section id="articulos-pubertad">
+
+                <div class="main">
+                    <br>
+                    <h1 class="text-uppercase text-dark" style="font-weight:600;">Pubertad</h1>
+                    <br>
+                    <ul class="cards">
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://media.istockphoto.com/photos/concept-polycystic-ovary-syndrome-pcos-women-reproductive-system-picture-id1209589161?k=20&m=1209589161&s=612x612&w=0&h=8-x1ATGxxBqHQHdR43Er77pjAs5KEIJrn9fX8kzsw-0=">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">El estrés y su relación con el ciclo menstrual</h2>
+                                    <p class="card_text"> Estoy completamente seguro que alguna vez se te atrasó la
+                                        llegada de la menstruación o,
+                                        por el contrario, se te adelantó. Es muy probable que no supieras bien por qué
+                                        esto te sucedía y es muy probable que estuvieras estresada o preocupada por
+                                        problemas familiares,
+                                        problemas de pareja, algún parcial o final que estabas por presentar o tuvieras
+                                        alguna dificultad económica, etc. </p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/pubertad_estres-y-ciclo-menstrual.html">Ver más</a></button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://mejorconsalud.com/wp-content/uploads/2019/07/mujer-con-acne.jpg">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">Señales de que estas en la Pubertad</h2>
+                                    <p class="card_text">Nos sentimos un poco extrañas, notamos unos cambios en el
+                                        cuerpo y
+                                        estamos pasando
+                                        por situaciones desconocidas ¿será que estamos entrando a la pubertad?
+                                        ¿Conocemos cuáles son las señakes de esta?
+                                        Sophi by Nosotras nos cuenta cómo identificar que llegamos a este proceso de
+                                        crecimiento.
+
+                                    </p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/pubertad_senales-pubertad.html">Ver más</a></button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cards_item">
+                            <div class="card">
+                                <div class="card_image"><img
+                                        src="https://storage.googleapis.com/codigo_bucket/wp-content/uploads/2017/07/Cambiemos-bullying-for-loving-2.png">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">¿Cómo afrontar el bullying? ¡Comparte loving!</h2>
+                                    <p class="card_text">Hoy con nuestros psicólogos invitados de la Universidad CES de
+                                        Medellín
+                                        / Colombia,
+                                        queremos contarte un poco más acerca del bullying, nuestra intención es que,
+                                        mediante
+                                        ejemplos claros y concretos, comprendas
+                                        de qué formas puede presentarse el bullying, y qué puedes hacer tú para
+                                        cambiarlo por Loving.</p>
+                                    <button class="btn-card"><a href="../Nosotrass---Grupo-6-master/articulos/pubertad_comparte-loving.html">Ver más</a></button>
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+            </section>
+
+
+            <div class="card bg-dark text-white mx-auto d-none" style="border-radius: 1rem; width: 800px;">
+                <div class="card-body">
+                    <form id="postForm" action="">
+
+                        <h5>Escribe tu mensaje</h5>
+                        <label class="form-label" for="postText">Mensaje</label>
+                        <div class="form-outline form-white mb-4">
+                            <textarea class="form-control form-control-lg" id="postText" rows="3"></textarea>
                         </div>
-                        <!-- End Col -->
+                        <button id="btnSendPost" class="btn btn-outline-light btn-lg px-5"
+                            type="submit">Postear</button>
+                    </form>
+                </div>
+            </div>
+            <div id="postList">
+
+            </div>
+        </div>
+
+
+
+        <!------ Include the above in your HEAD tag ---------->
+
+
+        <footer id="dk-footer" class="dk-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-4">
+                        <div class="dk-footer-box-info">
+                            <a href="index.html" class="footer-logo">
+                                <img src="assets/img/Logo2.jpg" style="border-radius: 5rem; width: 30%;"
+                                    alt="footer_logo" class="img-fluid">
+                            </a>
+                            <p class="footer-info-text">
+                                La familia Nosotras está pendiente de ti y que tomes con calma e infrmada tu etapa de
+                                crecciemiento y tus cuidados.
+                            </p>
+                            <div class="footer-social-link">
+                                <h3>Siguenos</h3>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/nosotrasPeru">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/YoAmoNosotras">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.nosotrasonline.com.pe">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://vm.tiktok.com/">
+                                            <i class="fab fa-tiktok"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/nosotrasperu/">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Social link -->
+                        </div>
+                        <!-- End Footer info -->
+                        <div class="footer-awarad">
+                            <img src="images/icon/best.png" alt="">
+                            <p>La mejor marca para cuidado femenino 2022</p>
+                        </div>
                     </div>
-                    <!-- End Contact Row -->
-                    <div class="row">
-                        <div class="col-md-12 col-lg-6">
-                            <div class="footer-widget footer-left-widget">
-                                <div class="section-heading">
-                                    <h3>Links </h3>
-                                    <span class="animate-border border-black"></span>
+                    <!-- End Col -->
+                    <div class="col-md-12 col-lg-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="contact-us">
+                                    <div class="contact-icon">
+                                        <i class="fa fa-map-o" aria-hidden="true"></i>
+                                    </div>
+                                    <!-- End contact Icon -->
+                                    <div class="contact-info">
+                                        <h3>Dirección</h3>
+                                        <p>5353 Road Avenue</p>
+                                    </div>
+                                    <!-- End Contact Info -->
                                 </div>
+                                <!-- End Contact Us -->
+                            </div>
+                            <!-- End Col -->
+                            <div class="col-md-6">
+                                <div class="contact-us contact-us-last">
+                                    <div class="contact-icon">
+                                        <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                    </div>
+                                    <!-- End contact Icon -->
+                                    <div class="contact-info">
+                                        <h3>0800 7 1218</h3>
+                                        <p>Contáctanos</p>
+                                    </div>
+                                    <!-- End Contact Info -->
+                                </div>
+                                <!-- End Contact Us -->
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Contact Row -->
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="footer-widget footer-left-widget">
+                                    <div class="section-heading">
+                                        <h3>Links </h3>
+                                        <span class="animate-border border-black"></span>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a
+                                                href="https://www.nosotrasonline.com.pe/entre-nosotras/cuidado-femenino/">Lo
+                                                último</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.nosotrasonline.com.pe/magazin/concursos/">Concursos</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.nosotrasonline.com.pe/magazin/juegos/">Juegos</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.nosotrasonline.com.pe/magazin/horoscopo/">Horoscopo</a>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.nosotrasonline.com.pe/contactanos/">Contactanos</a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="https://www.nosotrasonline.com.pe/productos/durante-tu-periodo">Productos</a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="https://www.nosotrasonline.com.pe/entre-nosotras/consultorios/ginecologa">Ginecologa</a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="https://www.nosotrasonline.com.pe/entre-nosotras/consultorios/psicologa">Psicologa</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- End Footer Widget -->
+                            </div>
+                            <!-- End col -->
+                            <div class="col-md-12 col-lg-6">
+                                <div class="footer-widget">
+                                    <div class="section-heading">
+                                        <h3>Subscribete</h3>
+                                        <span class="animate-border border-black"></span>
+                                    </div>
+                                    <p>
+                                        <!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
+                                        Inscribite y forma parte de la familia...!Sé una más de nosotras!
+                                    </p>
+                                    <form action="#">
+                                        <div class="form-row">
+                                            <div class="col dk-footer-form">
+                                                <input type="email" class="form-control "
+                                                    placeholder="Correo Electrónico">
+                                                <button type="submit">
+                                                    <i class="fa fa-send float-end"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- End form -->
+                                </div>
+                                <!-- End footer widget -->
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                    </div>
+                    <!-- End Col -->
+                </div>
+                <!-- End Widget Row -->
+            </div>
+            <!-- End Contact Container -->
+
+
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span>Copyright © 2022, Todos los derechos resevados por Nosotras</span>
+                        </div>
+                        <!-- End Col -->
+                        <div class="col-md-6">
+                            <div class="copyright-menu">
                                 <ul>
                                     <li>
-                                        <a href="https://www.nosotrasonline.com.pe/entre-nosotras/cuidado-femenino/">Lo último</a>
+                                        <a href="index.html">Inicio</a>
                                     </li>
                                     <li>
-                                        <a href="https://www.nosotrasonline.com.pe/magazin/concursos/">Concursos</a>
+                                        <a href="index.html#sectionCursos">Material Informativo</a>
                                     </li>
                                     <li>
-                                        <a href="https://www.nosotrasonline.com.pe/magazin/juegos/">Juegos</a>
+                                        <a href="empresa.html">Empresa</a>
                                     </li>
                                     <li>
-                                        <a href="https://www.nosotrasonline.com.pe/magazin/horoscopo/">Horoscopo</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="https://www.nosotrasonline.com.pe/contactanos/">Contactanos</a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.nosotrasonline.com.pe/productos/durante-tu-periodo">Productos</a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.nosotrasonline.com.pe/entre-nosotras/consultorios/ginecologa">Ginecologa</a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.nosotrasonline.com.pe/entre-nosotras/consultorios/psicologa">Psicologa</a>
+                                        <a href="estudiantes.html">Estudiante</a>
                                     </li>
                                 </ul>
                             </div>
-                            <!-- End Footer Widget -->
                         </div>
                         <!-- End col -->
-                        <div class="col-md-12 col-lg-6">
-                            <div class="footer-widget">
-                                <div class="section-heading">
-                                    <h3>Subscribete</h3>
-                                    <span class="animate-border border-black"></span>
-                                </div>
-                                <p><!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
-                                Inscribite y forma parte de la familia...!Sé una más de nosotras!</p>
-                                <form action="#">
-                                    <div class="form-row">
-                                        <div class="col dk-footer-form">
-                                            <input type="email" class="form-control " placeholder="Correo Electrónico">
-                                            <button type="submit">
-                                                <i class="fa fa-send float-end"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- End form -->
-                            </div>
-                            <!-- End footer widget -->
-                        </div>
-                        <!-- End Col -->
                     </div>
                     <!-- End Row -->
                 </div>
-                <!-- End Col -->
+                <!-- End Copyright Container -->
             </div>
-            <!-- End Widget Row -->
-        </div>
-        <!-- End Contact Container -->
-
-
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <span>Copyright © 2022, Todos los derechos resevados por Nosotras</span>
-                    </div>
-                    <!-- End Col -->
-                    <div class="col-md-6">
-                        <div class="copyright-menu">
-                            <ul>
-                                <li>
-                                    <a href="index.html">Inicio</a>
-                                </li>
-                                <li>
-                                    <a href="index.html#sectionCursos">Material Informativo</a>
-                                </li>
-                                <li>
-                                    <a href="empresa.html">Empresa</a>
-                                </li>
-                                <li>
-                                    <a href="estudiantes.html">Estudiante</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- End col -->
-                </div>
-                <!-- End Row -->
+            <!-- End Copyright -->
+            <!-- Back to top -->
+            <div id="back-to-top" class="back-to-top">
+                <button class="btn btn-dark" title="Back to Top" style="display: block;">
+                    <i class="fa fa-angle-up"></i>
+                </button>
             </div>
-            <!-- End Copyright Container -->
-        </div>
-        <!-- End Copyright -->
-        <!-- Back to top -->
-        <div id="back-to-top" class="back-to-top">
-            <button class="btn btn-dark" title="Back to Top" style="display: block;">
-                <i class="fa fa-angle-up"></i>
-            </button>
-        </div>
-        <!-- End Back to top -->
-</footer>
+            <!-- End Back to top -->
+        </footer>
 
 
-<!-- Credit to https://bootsnipp.com/snippets/ooa9M -->
+        <!-- Credit to https://bootsnipp.com/snippets/ooa9M -->
 
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-        crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+            crossorigin="anonymous"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-      <!-- CDN jQuery -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <!-- Se agrega el CDN de Firebase, agregar los demas CDN (jquery y bootstrap)-->
-      <!-- CDN Firebase -->
-      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-      <!-- CDN Authentication Firebase -->
-      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-      <!-- CDN Firestore Firebase -->
-      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-      <!-- CDN Firestore storage -->
-      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-      <!-- js personalizado -->
-
-      
-
-    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
-      <script src="assets/js/main.js"></script>
-    
-
-
-
+        <!-- CDN jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Se agrega el CDN de Firebase, agregar los demas CDN (jquery y bootstrap)-->
+        <!-- CDN Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <!-- CDN Authentication Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <!-- CDN Firestore Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <!-- CDN Firestore storage -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+        <!-- js personalizado -->
+        <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+        <script src="assets/js/script.js"></script>
+        <script src="assets/js/main.js"></script>
 </body>
 
 
