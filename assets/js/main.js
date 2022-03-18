@@ -582,39 +582,50 @@ $(document).ready(function () {
     // ;
   
     function loadUserInfo() {
-      const user = firebase.auth().currentUser;
-      const rol = $("#rol").val();
-      let html = "";
-      if (user !== null) {
-        const displayName = user.displayName;
-        const email = user.email;
-        var photoURL = "";
-        if (user.photoURL != null) {
-          photoURL = user.photoURL;
-        } else {
-          photoURL = "https://toppng.com/uploads/preview/user-font-awesome-nuevo-usuario-icono-11563566658mjtfvilgcs.png";
+        const user = firebase.auth().currentUser;
+        var usuariosRef = db.collection("usuarios");
+        var query = usuariosRef.where("email", "==", user.email);
+        var usuario = null;
+        query.get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              usuario = doc;
+              const rol = usuario.data().rol;
+        let html = "";
+        if (user !== null) {
+          const displayName = user.displayName;
+          const email = user.email;
+          var photoURL = "";
+          if (user.photoURL != null) {
+            photoURL = user.photoURL;
+          } else {
+            photoURL = "https://toppng.com/uploads/preview/user-font-awesome-nuevo-usuario-icono-11563566658mjtfvilgcs.png";
+          }
+          const emailVerified = user.emailVerified;
+          const uid = user.uid;
+          if (rol == "EMPRESA") {
+            window.location.href = "/Nosotras/empresa.html";
+            } 
+          html =
+            `
+              <div class="card-body text-center " >
+              <div style="align-items:center; justify-content:center; ">
+                <div id="contenedorUser" class="text-center;">
+                  <h2 style="font-family: monospace; font-weight: 600;">${rol}</h2>
+                  <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 200px;"  
+                </div>
+                <div id="userInfo" class="text-center" >
+                  <h3>${displayName}</h3>
+                  <h4>${email}</h4>
+                </div>
+                </div>
+              </div>
+                `;
+          $("#userInfo").append(html);
         }
-        const emailVerified = user.emailVerified;
-        const uid = user.uid;
-  
-        html =
-          `
-            <div class="card-body text-center " >
-            <div style="align-items:center; justify-content:center; ">
-              <div id="contenedorUser" class="text-center;">
-                <h2 style="font-family: monospace; font-weight: 600;">${rol}</h2>
-                <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 200px;"  
-              </div>
-              <div id="userInfo" class="text-center" >
-                <h3>${displayName}</h3>
-                <h4>${email}</h4>
-              </div>
-              </div>
-            </div>
-              `;
-        $("#userInfo").append(html);
+            })
+        })
+        
       }
-    }
   
     //Funcion para agregar nombre despues de crear un usuario nuevo
     function addFullName(fullName) {

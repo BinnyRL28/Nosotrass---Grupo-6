@@ -9,3 +9,57 @@ h1 , p {
 #imagen-articulo{
     width: 100%; height: 400px; margin: 50px 0;
 }
+
+.articulo{
+    position: relative; top: 150px; 
+    margin-bottom: 20px; background-color: white; 
+    padding: 100px; display: flex; text-align: justify; 
+    flex-direction: column; 
+
+    margin-bottom: 300px;
+}
+
+
+h1{
+    color: rgb(227, 29, 147);
+    font-family: segundaFuente;
+    margin: 12px;
+  
+}
+
+p{
+    color: black;
+    margin: 5px;
+}
+
+#imagen-articulo{
+    width: 100%; height: 400px; margin: 50px 0;
+}
+
+
+.video-articulo iframe{
+    width: 100%;
+    display: flex;
+
+}
+
+.video-articulo img{
+    width: 100%;
+    display: flex;
+
+}
+
+.video-articulo{
+
+    width: auto;
+}
+
+.listado-articulo{
+    color:black;
+}
+
+
+
+ol{
+    color:black;
+}

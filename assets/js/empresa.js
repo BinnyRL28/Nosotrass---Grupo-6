@@ -206,7 +206,7 @@ $(document).ready(function () {
         $("#login").hide();
         // mostramos el contenido
         $("#contenidoWeb").show();
-        // obtienePost();
+        obtieneFomulario();
         $("#logout").show();
   
         // obtienePosts();
@@ -245,7 +245,7 @@ $(document).ready(function () {
         var link = $("#ingresoLink").val();
 
         if(titulo.lenght > 0 && texto.lenght > 0 && imagen ==! null) {
-            db.collection("formularios").add ({
+            db.collection("contenidos").add ({
                 titulo: titulo,
                 texto: texto,
                 imagen: imagen,
@@ -335,7 +335,7 @@ $(document).ready(function () {
     }
 
     function obtieneFomulario() {
-        db.collection("formulario").get().then((snapshot) => {
+        db.collection("contenido").get().then((snapshot) => {
             setupFormulario(snapshot.docs);
         })
     }
@@ -712,7 +712,13 @@ $(document).ready(function () {
   
     function loadUserInfo() {
       const user = firebase.auth().currentUser;
-      const rol = $("#rol").val();
+      var usuariosRef = db.collection("usuarios");
+      var query = usuariosRef.where("email", "==", user.email);
+      var usuario = null;
+      query.get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            usuario = doc;
+            const rol = usuario.data().rol;
       let html = "";
       if (user !== null) {
         const displayName = user.displayName;
@@ -725,7 +731,9 @@ $(document).ready(function () {
         }
         const emailVerified = user.emailVerified;
         const uid = user.uid;
-  
+        if (rol == "ESTUDIANTE") {
+            window.location.href = "/Nosotras/estudiantes.html";
+            } 
         html =
           `
             <div class="card-body text-center " >
@@ -743,6 +751,9 @@ $(document).ready(function () {
               `;
         $("#userInfo").append(html);
       }
+          })
+      })
+      
     }
   
     //Funcion para agregar nombre despues de crear un usuario nuevo
