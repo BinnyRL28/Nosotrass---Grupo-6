@@ -2,14 +2,14 @@ $(document).ready(function () {
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-        apiKey: "AIzaSyA7g6wlvwrhViE68i1zO6k6XZ3-GYd77RI",
-        authDomain: "nosotras-d301f.firebaseapp.com",
-        projectId: "nosotras-d301f",
-        storageBucket: "nosotras-d301f.appspot.com",
-        messagingSenderId: "388800746639",
-        appId: "1:388800746639:web:c6974b6699c9df47dc4cfa",
-        measurementId: "G-DJC9TZ7YSM"
-      };
+      apiKey: "AIzaSyA7g6wlvwrhViE68i1zO6k6XZ3-GYd77RI",
+      authDomain: "nosotras-d301f.firebaseapp.com",
+      projectId: "nosotras-d301f",
+      storageBucket: "nosotras-d301f.appspot.com",
+      messagingSenderId: "388800746639",
+      appId: "1:388800746639:web:c6974b6699c9df47dc4cfa",
+      measurementId: "G-DJC9TZ7YSM"
+    };
   
     // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
@@ -29,34 +29,33 @@ $(document).ready(function () {
     // Inicializar Firestore (Base de datos)
     // const storageRef = storage.ref();
   
-
-
+  
+  
     // Rergistrar los usuarios
     // Si no esta registrado, debe hacer click en boton registrar
-   /*  $("#btnRegistro").click(function (e) {
-      e.preventDefault();
-      // Esto hará que el login desaparezca
-      $("#login").hide();
-      // Esto hara que el formulario de registro aparezca
-      $(".registro-usuario").show();
-    })
- */
-
-
+    /*  $("#btnRegistro").click(function (e) {
+       e.preventDefault();
+       // Esto hará que el login desaparezca
+       $("#login").hide();
+       // Esto hara que el formulario de registro aparezca
+       $(".registro-usuario").show();
+     })
+  */
+  
+  
   
     $("#registrate").click(function (e) {
-        console.log("hola");
       $("#btnRegistroConEmail").removeClass("d-none");
       $(".full-name-input").removeClass("d-none");
       $("#registrateAviso").addClass("d-none");
-    //   $("#btnRegistroConEmail").addClass("d-none");
-    $("#btnIngresoConEmail").removeClass("d-block");
-    $("#btnIngresoGmail").removeClass("d-block");
+      //   $("#btnRegistroConEmail").addClass("d-none");
+      $("#btnIngresoConEmail").removeClass("d-block");
+      $("#btnIngresoGmail").removeClass("d-block");
       $("#btnIngresoConEmail").hide();
       $("#btnIngresoGmail").hide();
       $(".extras").removeClass("d-none");
       $(".extras").addClass("d-block");
-          
+  
     })
   
     // Si se completa el formulario de registro y se envia, registra al nuevo usuario y se guarda la sesion
@@ -65,7 +64,6 @@ $(document).ready(function () {
       // Capturamos los datos enviados por el formulario de registro
       // Campo full name
       var fullName = $("#ingresoFullName").val();
-
       // Campo email
       var email = $("#IngresoEmail").val();
       //Campo Password
@@ -73,37 +71,37 @@ $(document).ready(function () {
       // Metodo de firebase que permite registro de usarios con email
       var rol = $("#rol").val();
       // Metodo de firebase que permite registro de usarios con email
-
       var nombreEmpresa = $("#nombreEmpresa").val();
-
       var rubro = $("#rubro").val();
-
       var tema = $("#tema").val();
-
-      if (password.length<6) {
+  
+      if (password.length < 6) {
         alert(" ⚠️ Deben ser 6 carácteres como mínimo")
       };
-
-      auth
+  
+      firebase.auth()
         .createUserWithEmailAndPassword(email, password)
-        .then(userCredential => {
-
-            var user = userCredential.user;
-			db.collection("usuarios").add({
-				nombre: fullName,
-				email: email,
-				id_auth: user.uid,
-                nombreEmpresa: nombreEmpresa,
-                rubro: rubro,
-                tema: tema,
-				rol: rol,
-			})
-
-            console.log("Usuario Creado");
-            addFullName(fullName);
-          // limpiar formulario de registro
-          $("#IngresoEmailForm").trigger("reset");
-          
+        .then((userCredential) => {
+          var user = userCredential.user;
+          console.log("antes de guardar");
+          db.collection("usuarios").add({
+            "nombre": fullName,
+            "email": email,
+            "id_auth": user.uid,
+            nombreEmpresa: nombreEmpresa,
+            rubro: rubro,
+            tema: tema,
+            rol: rol,
+          })
+            .then((docRef) => {
+              console.log("Usuario Creado");
+              addFullName(fullName);
+              // limpiar formulario de registro
+              $("#IngresoEmailForm").trigger("reset");
+            })
+            .catch((error) => {
+              console.log("Error agregando el documento con ID", docRef.id);
+            });
         })
         .catch((error) => { // Esto permite capturar el error, se puede trabajar este catch con los codigos de error
           var errorCode = error.code;
@@ -116,10 +114,10 @@ $(document).ready(function () {
         });
   
     })
-    
-    
-   
-
+  
+  
+  
+  
     //MODIFICANDO ESTA PARTE
     // Acceso de usuarios
     // Ingresar por email
@@ -140,43 +138,43 @@ $(document).ready(function () {
       // Campo Password
       var password = $("#ingresoPassword").val();
       // Metodo que permite ingreso de usarios con email
-      
-        auth.signInWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-
-            console.log("Usuario logueado con Email y contraseña");
-            // limpiar formualrio de ingreso
-            $("#IngresoEmailForm").trigger("reset");
-            $("#alert-login").hide();
-            $("#alert-login-2").hide();
-            $("#alert-login-registro").hide();
-          })
-          .catch((error) => {// Esto permite capturar el error, se puede trabajar este catch con los codigos de error
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // Muestro en la consola el codigo de error y el mensaje de error
-            console.log(errorCode, errorMessage)
-            if (error.code == 'auth/argument-error' || errorCode == "auth/wronf-password") {
-          $("#alert-login").removeClass("d-none");
-          $("#alert-login").addClass("d-block");
-            }if (errorCode == "auth/user-not-found") {
+  
+      auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+  
+          console.log("Usuario logueado con Email y contraseña");
+          // limpiar formualrio de ingreso
+          $("#IngresoEmailForm").trigger("reset");
+          $("#alert-login").hide();
+          $("#alert-login-2").hide();
+          $("#alert-login-registro").hide();
+        })
+        .catch((error) => {// Esto permite capturar el error, se puede trabajar este catch con los codigos de error
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // Muestro en la consola el codigo de error y el mensaje de error
+          console.log(errorCode, errorMessage)
+          if (error.code == 'auth/argument-error' || errorCode == "auth/wronf-password") {
+            $("#alert-login").removeClass("d-none");
+            $("#alert-login").addClass("d-block");
+          } if (errorCode == "auth/user-not-found") {
             $("alert-login-2").removeClass("d-none");
             $("alert-login-2").addClass("d-block");
-
-        }
-          });
-      
-
+  
+          }
+        });
+  
+  
     });
   
-  /*   $("#btnIngresoEmail").click(function (e) {
-      e.preventDefault();
-      // Mostramos formulario de ingreso por email
-      $("#IngresoEmail").show();
-      // Ocultamos boton de ingreso por email
-      $("#btnIngresoEmail").hide();
-    })
-   */
+    /*   $("#btnIngresoEmail").click(function (e) {
+        e.preventDefault();
+        // Mostramos formulario de ingreso por email
+        $("#IngresoEmail").show();
+        // Ocultamos boton de ingreso por email
+        $("#btnIngresoEmail").hide();
+      })
+     */
     // Ingresar con google
     $("#btnIngresoGmail").click(function (e) {
       e.preventDefault();
@@ -189,7 +187,7 @@ $(document).ready(function () {
         })
     })
   
-    
+  
   
     // Desconexion de Usuarios
     // Boton LogOut
@@ -210,7 +208,7 @@ $(document).ready(function () {
         $("#contenidoWeb").show();
         // obtienePost();
         $("#logout").show();
-
+  
         // obtienePosts();
         loadUserInfo();
       } else {
@@ -316,7 +314,7 @@ $(document).ready(function () {
   
     // //Va a mostrar los datos en la vista
     // function postList(data) {
-      
+  
     //   const user = firebase.auth().currentUser;
     //   if(data.length > 0) {
     //     $("#postList").empty();
@@ -326,18 +324,18 @@ $(document).ready(function () {
     //       var post = doc.data();
     //       // contarLikes(doc.id)
     //       // console.log("vallor de data", doc.id)
-         
-         
+  
+  
     //       var div = ``;
     //       if (user.uid == post.idUser) {
     //         function myf1() {
     //           document.getElementById("btn-like").style.backgroundColor= "red";
     //         }
-        
+  
     //         function myf2() {
     //           document.getElementById("btn-like").style.backgroundColor = "blue";
     //         }
-          
+  
     //         console.log(post.cantlikes);
     //         div = `
     //         <div class="contenedorpostList" >
@@ -345,7 +343,7 @@ $(document).ready(function () {
     //             <p class="fechaPost"> Publicado por ${post.userName}, el ${post.date}</p>
     //             <p class="mensajePublicado">${post.mensaje}</p>
     //             <img src="${post.urltext}" id="imagePost" class="mx-auto" style="align-item:center; justify-content:center; margin-top:20px; margin-bottom:20px;">
-                
+  
     //             <button data-id="${doc.id}" class="btn btn-success btn-edit-post bi bi-pencil">
     //             Editar
     //             </button>
@@ -369,7 +367,7 @@ $(document).ready(function () {
     //             <p class="fechaPost">  Publicado por ${post.userName}, el ${post.date}</p>
     //             <p class="mensajePublicado">${post.mensaje}</p>
     //             <img src="${post.urltext}" id="imagePost" class="mx-auto" style="align-item:center; justify-content:center; margin-top:20px; margin-bottom:20px;">
-                
+  
     //             <button data-id="${doc.id}" id="btn-like" class=" likes">
     //               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
     //                 <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
@@ -383,27 +381,27 @@ $(document).ready(function () {
     //       }
     //       html += div;
     //     });
-
-        
-          
+  
+  
+  
     //       // let boton = document.getElementById("btn-like");
     //       // boton.addEventListener("click", myf1);
     //       // boton.addEventListener("click", myf2);
     //       // boton.addEventListener("mouseover", function(){boton.textContent="¡Hola!"});
     //       // boton.addEventListener("mouseout", function(){boton.textContent="No te vayas"});
-      
-      
+  
+  
     //       // function myf1() {
     //       //   document.getElementById("btn-like").style.backgroundColor= "red";
     //       // }
-      
+  
     //       // function myf2() {
     //       //   document.getElementById("btn-like").style.backgroundColor = "blue";
     //       // }
-        
-
-        
-        
+  
+  
+  
+  
     //     $("#postList").append(html);
     //     var btnsEdit = document.querySelectorAll(".btn-edit-post");
     //     btnsEdit.forEach(btn => {
@@ -413,7 +411,7 @@ $(document).ready(function () {
     //         obtienePost(id);
     //       })
     //     })
-        
+  
     //     var btnsDelete = document.querySelectorAll(".btn-delete-post");
     //     btnsDelete.forEach(btn => {
   
@@ -468,7 +466,7 @@ $(document).ready(function () {
     // }
   
   
-    
+  
   
     // //Funcion para el eliminar el post
     // function deletePost(id) {
@@ -483,7 +481,7 @@ $(document).ready(function () {
     // }
   
     //Funcion que permite añadir url de la imagen al registro recien creado en firestore
-    function agregarImagen(file, name, id){
+    function agregarImagen(file, name, id) {
       const metadata = {
         contentType: file.type
       }
@@ -499,7 +497,7 @@ $(document).ready(function () {
             case firebase.storage.TaskState.RUNNING:
               console.log(" Upload is running")
               break;
-        
+  
           }
         },
         (error) => {
@@ -516,110 +514,110 @@ $(document).ready(function () {
           }
         },
   
-        async () =>{
+        async () => {
           const url = await uploadTask.snapshot.ref.getDownloadURL();
           db.collection("posts").doc(id).update({
-            urltext : url
+            urltext: url
           }).then(() => {
             window.location.reload();
           })
         }
-        );
+      );
     }
   
-    
-  /* 
-    //Funcion para obtener el dia y la hora en español
-     const datePostDB = () => {
-      const datePost = {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
+  
+    /* 
+      //Funcion para obtener el dia y la hora en español
+       const datePostDB = () => {
+        const datePost = {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        };
+        const timePost = {
+          hour12: 'true',
+          hour: 'numeric',
+          minute: 'numeric',
+        };
+      
+        const date = new Date().toLocaleDateString('es-Es', datePost);
+        const time = new Date().toLocaleTimeString('es-Es', timePost);
+        const dateTime = `${date} ${time}`;
+      
+        return dateTime;
       };
-      const timePost = {
-        hour12: 'true',
-        hour: 'numeric',
-        minute: 'numeric',
+      
+      const orderDate = () => {
+        const dateNow = new Date();
+        const year = dateNow.getFullYear();
+        const month = `0${dateNow.getMonth()}`.slice(-2);
+        const day = `0${dateNow.getDate()}`.slice(-2);
+        const hour = `0${dateNow.getHours()}`.slice(-2);
+        const minute = `0${dateNow.getMinutes()}`.slice(-2);
+        const second = `0${dateNow.getSeconds()}`.slice(-2);
+        return parseInt(`${year}${month}${day}${hour}${minute}${second}`, 0);
       };
-    
-      const date = new Date().toLocaleDateString('es-Es', datePost);
-      const time = new Date().toLocaleTimeString('es-Es', timePost);
-      const dateTime = `${date} ${time}`;
-    
-      return dateTime;
-    };
-    
-    const orderDate = () => {
-      const dateNow = new Date();
-      const year = dateNow.getFullYear();
-      const month = `0${dateNow.getMonth()}`.slice(-2);
-      const day = `0${dateNow.getDate()}`.slice(-2);
-      const hour = `0${dateNow.getHours()}`.slice(-2);
-      const minute = `0${dateNow.getMinutes()}`.slice(-2);
-      const second = `0${dateNow.getSeconds()}`.slice(-2);
-      return parseInt(`${year}${month}${day}${hour}${minute}${second}`, 0);
-    };
-   */
+     */
   
     // Metodo que sirve para mostrar los países en la tabla
-  //   function postList(data) {
-  //     $("#postList").empty();
-  //     if (data.length > 0) {
-  //       let html = '';
-  //       data.forEach(doc => {
-  //         const post = doc.data();
-  //         const div = `
-  //           <div class="card  text-black  mt-4 display-10 p-0" style="border-radius: 1rem; width: 600px;display:block" id="contenedorpostList">
-  //             <div class="card-body" >
-  //               <p>${post.mensaje}</p>
-  //               <p>Publicado el ${post.fecha} a las ${post.hora}</p>
-  //             </div>
-  //           </div>
-  //         `;
-  //         html += div;
-  //       });
-  //       $("#postList").append(html);
-  //     }
-  //   };
-  // ;
+    //   function postList(data) {
+    //     $("#postList").empty();
+    //     if (data.length > 0) {
+    //       let html = '';
+    //       data.forEach(doc => {
+    //         const post = doc.data();
+    //         const div = `
+    //           <div class="card  text-black  mt-4 display-10 p-0" style="border-radius: 1rem; width: 600px;display:block" id="contenedorpostList">
+    //             <div class="card-body" >
+    //               <p>${post.mensaje}</p>
+    //               <p>Publicado el ${post.fecha} a las ${post.hora}</p>
+    //             </div>
+    //           </div>
+    //         `;
+    //         html += div;
+    //       });
+    //       $("#postList").append(html);
+    //     }
+    //   };
+    // ;
   
-    function loadUserInfo(){
+    function loadUserInfo() {
       const user = firebase.auth().currentUser;
       const rol = $("#rol").val();
       let html = "";
-      if (user !== null ) {
+      if (user !== null) {
         const displayName = user.displayName;
         const email = user.email;
         var photoURL = "";
         if (user.photoURL != null) {
           photoURL = user.photoURL;
-        }else{
+        } else {
           photoURL = "https://toppng.com/uploads/preview/user-font-awesome-nuevo-usuario-icono-11563566658mjtfvilgcs.png";
         }
         const emailVerified = user.emailVerified;
         const uid = user.uid;
   
-        html = 
-            `
-          <div class="card-body text-center " >
-          <div style="align-items:center; justify-content:center; ">
-            <div id="contenedorUser" class="text-center;">
-              <h2 style="monospace">${rol}</h2>
-              <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 100px;"  
+        html =
+          `
+            <div class="card-body text-center " >
+            <div style="align-items:center; justify-content:center; ">
+              <div id="contenedorUser" class="text-center;">
+                <h2 style="monospace">${rol}</h2>
+                <img id="userPhoto" src="${photoURL}" class="rounded-circle" style="width: 100px;"  
+              </div>
+              <div id="userInfo" class="text-center" >
+                <h3>${displayName}</h3>
+                <h4>${email}</h4>
+              </div>
+              </div>
             </div>
-            <div id="userInfo" class="text-center" >
-              <h3>${displayName}</h3>
-              <h4>${email}</h4>
-            </div>
-            </div>
-          </div>
-            `;
+              `;
         $("#userInfo").append(html);
       }
     }
   
     //Funcion para agregar nombre despues de crear un usuario nuevo
-    function addFullName(fullName){
+    function addFullName(fullName) {
       const user = firebase.auth().currentUser;
       user.updateProfile({
         displayName: fullName
@@ -633,7 +631,7 @@ $(document).ready(function () {
   
     // async function agregarLike(id){
     //   var espuesta =await userTieneLike(id);
-       
+  
     //   if(tieneLike == 1){
     //     console.log("NO PUEDE VOLVER A DAR LIKE");
     //   }else {
@@ -649,10 +647,9 @@ $(document).ready(function () {
     //     // obtieneLikes();
     //     })
     //   }
-      
+  
     // }
   
   
-      
-  });
   
+  });
