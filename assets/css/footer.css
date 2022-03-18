@@ -2,6 +2,7 @@ body { color: whitesmoke }
 
 footer{
   margin-top:100px;
+  margin:0px;
 }
 .footer-widget p {
     margin-bottom: 27px;
@@ -162,8 +163,13 @@ p {
     margin-left: 20px;
     padding-top: 15px; }
 
-.footer-info-text {
-  margin: 26px 0 32px; }
+  .footer-info-text {
+      margin: 26px 0 32px;
+  }
+    
+  #dk-footer p{
+      color: white;
+    }
 
 .footer-left-widget {
   padding-left: 80px; }

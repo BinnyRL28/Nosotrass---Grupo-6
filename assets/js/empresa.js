@@ -503,7 +503,8 @@ $(document).ready(function () {
     // Funcion para cargar datos del usuario
     function loadUserInfo() {
       const user = firebase.auth().currentUser;
-      
+      const rol = $("#rol").val();
+
       let html = "";
       if (user !== null) {
         // The user object has basic properties such as display name, email, etc.
