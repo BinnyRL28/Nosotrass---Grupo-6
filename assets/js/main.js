@@ -24,10 +24,10 @@ $(document).ready(function () {
     const db = firebase.firestore();
   
     // Inicializar Firestore (Base de datos)
-    // const storage = firebase.storage();
+    const storage = firebase.storage();
   
     // Inicializar Firestore (Base de datos)
-    // const storageRef = storage.ref();
+    const storageRef = storage.ref();
   
   
   
@@ -53,6 +53,8 @@ $(document).ready(function () {
       $("#btnIngresoGmail").removeClass("d-block");
       $("#btnIngresoConEmail").hide();
       $("#btnIngresoGmail").hide();
+      $("#btnBack").removeClass("d-none");
+      $("#btnBack").addClass("d-block");
       $(".extras").removeClass("d-none");
       $(".extras").addClass("d-block");
   

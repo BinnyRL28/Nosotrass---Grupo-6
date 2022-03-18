@@ -2,35 +2,35 @@ $(document).ready(function () {
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-      apiKey: "AIzaSyA7g6wlvwrhViE68i1zO6k6XZ3-GYd77RI",
-      authDomain: "nosotras-d301f.firebaseapp.com",
-      projectId: "nosotras-d301f",
-      storageBucket: "nosotras-d301f.appspot.com",
-      messagingSenderId: "388800746639",
-      appId: "1:388800746639:web:c6974b6699c9df47dc4cfa",
-      measurementId: "G-DJC9TZ7YSM"
+        apiKey: "AIzaSyA7g6wlvwrhViE68i1zO6k6XZ3-GYd77RI",
+        authDomain: "nosotras-d301f.firebaseapp.com",
+        projectId: "nosotras-d301f",
+        storageBucket: "nosotras-d301f.appspot.com",
+        messagingSenderId: "388800746639",
+        appId: "1:388800746639:web:c6974b6699c9df47dc4cfa",
+        measurementId: "G-DJC9TZ7YSM"
     };
-  
+
     // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
-  
+
     // Inicializar Auth de Firebase
     const auth = firebase.auth();
-  
+
     // Inicializar Auth de Google
     var provider = new firebase.auth.GoogleAuthProvider();
-  
+
     // Inicializar Firestore (Base de datos)
     const db = firebase.firestore();
-  
+
     // Inicializar Firestore (Base de datos)
-    // const storage = firebase.storage();
-  
+    const storage = firebase.storage();
+
     // Inicializar Firestore (Base de datos)
-    // const storageRef = storage.ref();
-  
-  
-  
+    const storageRef = storage.ref();
+
+
+
     // Rergistrar los usuarios
     // Si no esta registrado, debe hacer click en boton registrar
     /*  $("#btnRegistro").click(function (e) {
@@ -41,83 +41,85 @@ $(document).ready(function () {
        $(".registro-usuario").show();
      })
   */
-  
-  
-  
+
+
+
     $("#registrate").click(function (e) {
-      $("#btnRegistroConEmail").removeClass("d-none");
-      $(".full-name-input").removeClass("d-none");
-      $("#registrateAviso").addClass("d-none");
-      //   $("#btnRegistroConEmail").addClass("d-none");
-      $("#btnIngresoConEmail").removeClass("d-block");
-      $("#btnIngresoGmail").removeClass("d-block");
-      $("#btnIngresoConEmail").hide();
-      $("#btnIngresoGmail").hide();
-      $(".extras").removeClass("d-none");
-      $(".extras").addClass("d-block");
-  
+        $("#btnRegistroConEmail").removeClass("d-none");
+        $(".full-name-input").removeClass("d-none");
+        $("#registrateAviso").addClass("d-none");
+        //   $("#btnRegistroConEmail").addClass("d-none");
+        $("#btnIngresoConEmail").removeClass("d-block");
+        $("#btnIngresoGmail").removeClass("d-block");
+        $("#btnIngresoConEmail").hide();
+        $("#btnIngresoGmail").hide();
+        $("#btnBack").removeClass("d-none");
+        $("#btnBack").addClass("d-block");
+        $(".extras").removeClass("d-none");
+        $(".extras").addClass("d-block");
+
     })
-  
+
     // Si se completa el formulario de registro y se envia, registra al nuevo usuario y se guarda la sesion
     $("#btnRegistroConEmail").click(function (e) {
-      e.preventDefault();
-      // Capturamos los datos enviados por el formulario de registro
-      // Campo full name
-      var fullName = $("#ingresoFullName").val();
-      // Campo email
-      var email = $("#IngresoEmail").val();
-      //Campo Password
-      var password = $("#ingresoPassword").val();
-      // Metodo de firebase que permite registro de usarios con email
-      var rol = $("#rol").val();
-      // Metodo de firebase que permite registro de usarios con email
-      var nombreEmpresa = $("#nombreEmpresa").val();
-      var rubro = $("#rubro").val();
-      var tema = $("#tema").val();
-  
-      if (password.length < 6) {
-        alert(" ⚠️ Deben ser 6 carácteres como mínimo")
-      };
-  
-      firebase.auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          var user = userCredential.user;
-          console.log("antes de guardar");
-          db.collection("usuarios").add({
-            "nombre": fullName,
-            "email": email,
-            "id_auth": user.uid,
-            nombreEmpresa: nombreEmpresa,
-            rubro: rubro,
-            tema: tema,
-            rol: rol,
-          })
-            .then((docRef) => {
-              console.log("Usuario Creado");
-              addFullName(fullName);
-              // limpiar formulario de registro
-              $("#IngresoEmailForm").trigger("reset");
+        e.preventDefault();
+        // Capturamos los datos enviados por el formulario de registro
+        // Campo full name
+        var fullName = $("#ingresoFullName").val();
+        // Campo email
+        var email = $("#IngresoEmail").val();
+        //Campo Password
+        var password = $("#ingresoPassword").val();
+        // Metodo de firebase que permite registro de usarios con email
+        var rol = $("#rol").val();
+        // Metodo de firebase que permite registro de usarios con email
+        var nombreEmpresa = $("#nombreEmpresa").val();
+        var rubro = $("#rubro").val();
+        var tema = $("#tema").val();
+
+        if (password.length < 6) {
+            alert(" ⚠️ Deben ser 6 carácteres como mínimo")
+        };
+
+        firebase.auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                var user = userCredential.user;
+                console.log("antes de guardar");
+                db.collection("usuarios").add({
+                    "nombre": fullName,
+                    "email": email,
+                    "id_auth": user.uid,
+                    nombreEmpresa: nombreEmpresa,
+                    rubro: rubro,
+                    tema: tema,
+                    rol: rol,
+                })
+                    .then((docRef) => {
+                        console.log("Usuario Creado");
+                        addFullName(fullName);
+                        // limpiar formulario de registro
+                        $("#IngresoEmailForm").trigger("reset");
+                    })
+                    .catch((error) => {
+                        console.log("Error agregando el documento con ID", docRef.id);
+                    });
             })
-            .catch((error) => {
-              console.log("Error agregando el documento con ID", docRef.id);
+            .catch((error) => { // Esto permite capturar el error, se puede trabajar este catch con los codigos de error
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // Muestro en la consola el codigo de error y el mensaje de error
+                if (error.code == 'auth/email-already-in-use') {
+                    $("#alert-login-registro").removeClass("d-none");
+                    $("#alert-login-registro").addClass("d-block");
+                }
             });
-        })
-        .catch((error) => { // Esto permite capturar el error, se puede trabajar este catch con los codigos de error
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // Muestro en la consola el codigo de error y el mensaje de error
-          if (error.code == 'auth/email-already-in-use') {
-            $("#alert-login-registro").removeClass("d-none");
-            $("#alert-login-registro").addClass("d-block");
-          }
-        });
-  
+
     })
-  
-  
-  
-  
+
+
+
+
     //MODIFICANDO ESTA PARTE
     // Acceso de usuarios
     // Ingresar por email
@@ -128,45 +130,45 @@ $(document).ready(function () {
       // Ocultamos boton de ingreso por email
       $("#btnIngresoEmail").hide();
     }) */
-  
+
     // Si ingresamos por correo y password mostramos formulario de ingreso 
     $("#btnIngresoConEmail").click(function (e) {
-      e.preventDefault();
-      // Capturamos los datos enviados por el formulario de ingreso
-      // Campo email
-      var email = $("#IngresoEmail").val();
-      // Campo Password
-      var password = $("#ingresoPassword").val();
-      // Metodo que permite ingreso de usarios con email
-  
-      auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-  
-          console.log("Usuario logueado con Email y contraseña");
-          // limpiar formualrio de ingreso
-          $("#IngresoEmailForm").trigger("reset");
-          $("#alert-login").hide();
-          $("#alert-login-2").hide();
-          $("#alert-login-registro").hide();
-        })
-        .catch((error) => {// Esto permite capturar el error, se puede trabajar este catch con los codigos de error
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // Muestro en la consola el codigo de error y el mensaje de error
-          console.log(errorCode, errorMessage)
-          if (error.code == 'auth/argument-error' || errorCode == "auth/wronf-password") {
-            $("#alert-login").removeClass("d-none");
-            $("#alert-login").addClass("d-block");
-          } if (errorCode == "auth/user-not-found") {
-            $("alert-login-2").removeClass("d-none");
-            $("alert-login-2").addClass("d-block");
-  
-          }
-        });
-  
-  
+        e.preventDefault();
+        // Capturamos los datos enviados por el formulario de ingreso
+        // Campo email
+        var email = $("#IngresoEmail").val();
+        // Campo Password
+        var password = $("#ingresoPassword").val();
+        // Metodo que permite ingreso de usarios con email
+
+        auth.signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+
+                console.log("Usuario logueado con Email y contraseña");
+                // limpiar formualrio de ingreso
+                $("#IngresoEmailForm").trigger("reset");
+                $("#alert-login").hide();
+                $("#alert-login-2").hide();
+                $("#alert-login-registro").hide();
+            })
+            .catch((error) => {// Esto permite capturar el error, se puede trabajar este catch con los codigos de error
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // Muestro en la consola el codigo de error y el mensaje de error
+                console.log(errorCode, errorMessage)
+                if (error.code == 'auth/argument-error' || errorCode == "auth/wronf-password") {
+                    $("#alert-login").removeClass("d-none");
+                    $("#alert-login").addClass("d-block");
+                } if (errorCode == "auth/user-not-found") {
+                    $("alert-login-2").removeClass("d-none");
+                    $("alert-login-2").addClass("d-block");
+
+                }
+            });
+
+
     });
-  
+
     /*   $("#btnIngresoEmail").click(function (e) {
         e.preventDefault();
         // Mostramos formulario de ingreso por email
@@ -177,56 +179,56 @@ $(document).ready(function () {
      */
     // Ingresar con google
     $("#btnIngresoGmail").click(function (e) {
-      e.preventDefault();
-      auth.signInWithPopup(provider)
-        .then(result => {
-          console.log("Ingreso con Google");
-        })
-        .catch(err => {
-          console.log(err);
-        })
+        e.preventDefault();
+        auth.signInWithPopup(provider)
+            .then(result => {
+                console.log("Ingreso con Google");
+            })
+            .catch(err => {
+                console.log(err);
+            })
     })
-  
-  
-  
+
+
+
     // Desconexion de Usuarios
     // Boton LogOut
     $("#logout").click(function (e) {
-      e.preventDefault();
-      auth.signOut().then(() => {
-        console.log("Log Out");
-      })
+        e.preventDefault();
+        auth.signOut().then(() => {
+            console.log("Log Out");
+        })
     })
-  
+
     // Ver si sesion esta activa
     auth.onAuthStateChanged((user) => {
-      if (user) {
-        // Si usuario esta conectado
-        // ocultamos el login
-        $("#login").hide();
-        // mostramos el contenido
-        $("#contenidoWeb").show();
-        obtieneFomulario();
-        $("#logout").show();
-  
-        // obtienePosts();
-        loadUserInfo();
-      } else {
-        $("#login").show()
-        // Si usuario esta desconectado
-        // Se oculta contenido de web
-        $("#contenidoWeb").hide();
-        // Se muestra el login
-        $("#logout").hide()
-        // $("#postList").hide();
-        $("#btnRegistroConEmail").addClass("d-none");
-        $(".full-name-input").addClass("d-none");
-        $("#btnIngresoConEmail").removeClass("d-none");
-        $("#btnIngresoConEmail").addClass("d-block");
-        $("#btnIngresoGmail").addClass("d-block");
-        $("#registrateAviso").removeClass("d-none");
-        $("#registrateAviso").addClass("d-block");
-      }
+        if (user) {
+            // Si usuario esta conectado
+            // ocultamos el login
+            $("#login").hide();
+            // mostramos el contenido
+            $("#contenidoWeb").show();
+            // obtieneFomulario();
+            $("#logout").show();
+
+            // obtieneFomularios();
+            loadUserInfo();
+        } else {
+            $("#login").show()
+            // Si usuario esta desconectado
+            // Se oculta contenido de web
+            $("#contenidoWeb").hide();
+            // Se muestra el login
+            $("#logout").hide()
+            // $("#postList").hide();
+            $("#btnRegistroConEmail").addClass("d-none");
+            $(".full-name-input").addClass("d-none");
+            $("#btnIngresoConEmail").removeClass("d-none");
+            $("#btnIngresoConEmail").addClass("d-block");
+            $("#btnIngresoGmail").addClass("d-block");
+            $("#registrateAviso").removeClass("d-none");
+            $("#registrateAviso").addClass("d-block");
+        }
     });
 
 
@@ -234,65 +236,91 @@ $(document).ready(function () {
     //     $("#containerBtnFomrulario").removeClass("d-none");
     //     $("#containerBtnFomrulario").addClass("d-block");
     // });
-//ESTA PARTE ESTÁ INCOMPLETA Y NO FUNCIONA LO DEL LOGIN SI DESCOMENTO ESTO
+    //ESTA PARTE ESTÁ INCOMPLETA Y NO FUNCIONA LO DEL LOGIN SI DESCOMENTO ESTO
 
 
-    $("#btnSendContenido").click(function(e) {
+    $("#btnSendContenido").click(function (e) {
         e.preventDefault();
         var titulo = $("#ingresoTitulo").val();
         var texto = $("#ingresoTexto").val();
-        var imagen = $("#ingresoImagen").val();
+        // var urlimagen = $("#ingresoImagen").val();
         var link = $("#ingresoLink").val();
+        var tema = $("#tema").val();
 
-        if(titulo.lenght > 0 && texto.lenght > 0 && imagen ==! null) {
-            db.collection("contenidos").add ({
+        if (tema.lenght > 0 && titulo.lenght > 0 && texto.lenght > 0) {
+
+            var d = new Date();
+            var strDate = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
+            var strHours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+            const file = document.querySelector("##ingresoImagen").files[0];
+            const user = firebase.auth().currentUser;
+
+            db.collection("contenidos").add({
+                tema: tema,
                 titulo: titulo,
                 texto: texto,
-                imagen: imagen,
+                fecha: strDate,
+                hora: strHours,
+                date: datePostDB(),
+                orderDate: orderDate(),
+                idUser: user.uid,
+                userName: user.displayName,
                 link: link,
+                urlimagen: ""
             })
-            .then((docRef) => {
-                console.log("Document written with ID: ", docRef.id);
-                $("#IngresoContenidoForm").trigger("reset");
-                obtieneFomulario();
-            })
-            .catch((error) => {
-                console.log("Error adding document")
-            });
+                .then((docRef) => {
+                    console.log("Datos guardados correctamente");
+                    $("#IngresoContenidoForm").trigger("reset");
+                    var id = docRef.id;
+                    if (file != null) {
+                        const name = strDate + "-" + strHours + "-" + file.name;
+                        agregarImagen(file, name, id);
+                    }
+                    obtieneFomularios();
+                })
+                .catch((error) => {
+                    console.log("Error adding document")
+                });
         } else {
             alert("Favor completar todos los campos")
         }
     });
 
-    function setupFormulario (data) {
-        $("#dataFormato").empty();
+    function contenidoList(data) {
+        const user = firebase.auth().currentUser;
         if (data.lenght > 0) {
-            let html = '';
+            $("#contenidoList").empty();
+            let html = "";
             data.forEach(doc => {
-                const topic = doc.data();
-                const tr = `
+                var contenido = doc.data();
+                var div = ``;
+
+                if (user.uid == contenido.idUser) {
+                    div = `
                 
-                <div class="container mt-5" id="container-fomularios">
-                    <div class="container  h-100" id="login">
+                <div class="container mt-2" id="container-fomularios">
+                    <div class="container  h-100" id="contenidoFomrmulario">
                         <div class="row d-flex justify-content-center align-items-center h-100">
                             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                                <div class="card bg-pink text-white" id="containercard" style="border-radius: 1rem;">
-                                    <div class="card-body p-5 text-center">
+                                <div class=" bg-pink text-white" id="containercard" style="border-radius: 1rem;">
+                                    <div class=" p-5 text-center">
                                         <div class="mb-md-5 mt-md-4">
-                                            <h2 class="text-center d-6 upercase">${topic.titulo}</h2>
+                                            <h2 class="text-center d-6 upercase">${contenido.tema} > ${contenido.titulo} - </h2> <h4>Publicado por ${contenido.userName}</h4>
                                             <hr>
                                             <br>
                                             <div> 
-                                            <p>${topic.texto}</p>
+                                            <p>${contenido.texto}</p>
                                             </div>
                                             <br>
-                                            <div class="w-100"> 
-                                            <img src="${topic.imagen}">
+                                            <div class="w-100 m-auto"> 
+                                            <img src="${contenido.urlimagen}">
                                             </div>
                                             <hr>
                                             <br>
                                             <h3>Links<h3>
-                                            <button class="btn btn-outline-dark"><a href="${topic.link}">${topic.link}</a></button>
+                                            <button class="btn btn-outline-dark"><a href="${contenido.link}">${contenido.link}</a></button>
+                                            <br>
+                                            <p> . ${contenido.date} </p>
                                         </div>
                                     </div>
                                 </div>
@@ -302,44 +330,36 @@ $(document).ready(function () {
                 </div>
 
                 `;
-
-                
-
-                html += tr;
+                }
+                html += div;
             });
-            $("#dataFormulario").append(html);
-        }else {
-            let html = '';
-            let tr = `
-            
-            <div class="container mt-5" id="container-fomularios">
-                    <div class="container  h-100" id="login">
-                        <div class="row d-flex justify-content-center align-items-center h-100">
-                            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                                <div class="card bg-pink text-white" id="containercard" style="border-radius: 1rem;">
-                                    <div class="card-body p-5 text-center">
-                                        <div class="mb-md-5 mt-md-4">
-                                            <h2 class="text-center d-6 upercase">No hay contenido</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <div>
-                    </div>
-                </div>
-
-            `;
-            html += tr;
-            $("#dataFomrulario").append(html);
+            $("#contenidoList").append(html);
         }
     }
+    //Funcion que actualiza el posteo
+    /* function obtieneFormulario(id) {
+        db.collection("contenidos").doc(id).get().then((doc) =>{
+            var contenido = doc.data();
+        });
+    } */
 
-    function obtieneFomulario() {
-        db.collection("contenido").get().then((snapshot) => {
-            setupFormulario(snapshot.docs);
+    // function obtieneFomulario() {
+    //     db.collection("contenidos").get().then((snapshot) => {
+    //         setupFormulario(snapshot.docs);
+    //     })
+    // }
+    //Ordena los contenidos desde el más nuevo al más vacio
+    function obtieneFomularios() {
+
+        var query = db.collection("contenidos").orderBy('orderDate', 'desc').then((querySnapshot) => {
+            contenidoList(querySnapshot.docs);
         })
     }
-  
+
+
+    // Funcion que permite obntener fecha completa y la convierte a numero, para luego ordenar los post
+
+
 
 
 
@@ -362,7 +382,7 @@ $(document).ready(function () {
     //   e.preventDefault();
     //   // Capturo los datos enviados desde el formulario con id "postForm"
     //   var mensaje = $("#postText").val();
-  
+
     //   if (mensaje.length > 0) {
     //     // Metodo de escritura para añadir elementos a la coleccion "post", 
     //     // si la coleccion no existe, la crea implicitamente
@@ -372,7 +392,7 @@ $(document).ready(function () {
     //     const file = document.querySelector("#postFile").files[0];
     //     const user = firebase.auth().currentUser;
     //     let cantidadLikes = 0;
-  
+
     //     db.collection("posts").add({
     //       cantlikes: cantidadLikes,
     //       mensaje: mensaje,
@@ -383,7 +403,7 @@ $(document).ready(function () {
     //       idUser: user.uid ,
     //       userName : user.displayName,
     //       urltext: ""
-  
+
     //     })
     //       .then((docRef) => {
     //         console.log("Los datos se guardaron correctamente");
@@ -401,21 +421,21 @@ $(document).ready(function () {
     //   } else {
     //     alert('Favor completar todos los campos');
     //   }
-  
+
     // });
-  
+
     // //Actualizar publicacion o posteo
     // $("#btnSavePost").click(function (e) {
     //   e.preventDefault();
     //   //Capturamos los datos enviados
     //   var mensaje = $("#postText").val();
     //   var id = $ ("#idPost").val();
-  
+
     //   if (mensaje.length > 0) {
     //     var d = new Date();
     //     var strDate = d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
     //     var strHours = d.getHours() + "-" + d.getMinutes() + "-" + d.getSeconds();
-  
+
     //     db.collection("posts").doc(id).update({
     //       mensaje: mensaje,
     //       fecha: strDate,
@@ -427,10 +447,10 @@ $(document).ready(function () {
     //       console.log("Posteo actualizado correctamente");
     //       $("postForm").trigger("reset");
     //       obtienePosts();
-  
+
     //       $("#btnSendPost").show();
     //       $("#btnSavePost").hide();
-  
+
     //     })
     //     .catch((error) => {
     //       console.log("El error en la actualización de los posteos es: ", error);
@@ -439,10 +459,10 @@ $(document).ready(function () {
     //     alert("Por favor completar todos los campos")
     //   }
     // })
-  
+
     // //Va a mostrar los datos en la vista
     // function postList(data) {
-  
+
     //   const user = firebase.auth().currentUser;
     //   if(data.length > 0) {
     //     $("#postList").empty();
@@ -452,18 +472,18 @@ $(document).ready(function () {
     //       var post = doc.data();
     //       // contarLikes(doc.id)
     //       // console.log("vallor de data", doc.id)
-  
-  
+
+
     //       var div = ``;
     //       if (user.uid == post.idUser) {
     //         function myf1() {
     //           document.getElementById("btn-like").style.backgroundColor= "red";
     //         }
-  
+
     //         function myf2() {
     //           document.getElementById("btn-like").style.backgroundColor = "blue";
     //         }
-  
+
     //         console.log(post.cantlikes);
     //         div = `
     //         <div class="contenedorpostList" >
@@ -471,7 +491,7 @@ $(document).ready(function () {
     //             <p class="fechaPost"> Publicado por ${post.userName}, el ${post.date}</p>
     //             <p class="mensajePublicado">${post.mensaje}</p>
     //             <img src="${post.urltext}" id="imagePost" class="mx-auto" style="align-item:center; justify-content:center; margin-top:20px; margin-bottom:20px;">
-  
+
     //             <button data-id="${doc.id}" class="btn btn-success btn-edit-post bi bi-pencil">
     //             Editar
     //             </button>
@@ -495,7 +515,7 @@ $(document).ready(function () {
     //             <p class="fechaPost">  Publicado por ${post.userName}, el ${post.date}</p>
     //             <p class="mensajePublicado">${post.mensaje}</p>
     //             <img src="${post.urltext}" id="imagePost" class="mx-auto" style="align-item:center; justify-content:center; margin-top:20px; margin-bottom:20px;">
-  
+
     //             <button data-id="${doc.id}" id="btn-like" class=" likes">
     //               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
     //                 <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
@@ -509,27 +529,27 @@ $(document).ready(function () {
     //       }
     //       html += div;
     //     });
-  
-  
-  
+
+
+
     //       // let boton = document.getElementById("btn-like");
     //       // boton.addEventListener("click", myf1);
     //       // boton.addEventListener("click", myf2);
     //       // boton.addEventListener("mouseover", function(){boton.textContent="¡Hola!"});
     //       // boton.addEventListener("mouseout", function(){boton.textContent="No te vayas"});
-  
-  
+
+
     //       // function myf1() {
     //       //   document.getElementById("btn-like").style.backgroundColor= "red";
     //       // }
-  
+
     //       // function myf2() {
     //       //   document.getElementById("btn-like").style.backgroundColor = "blue";
     //       // }
-  
-  
-  
-  
+
+
+
+
     //     $("#postList").append(html);
     //     var btnsEdit = document.querySelectorAll(".btn-edit-post");
     //     btnsEdit.forEach(btn => {
@@ -539,16 +559,16 @@ $(document).ready(function () {
     //         obtienePost(id);
     //       })
     //     })
-  
+
     //     var btnsDelete = document.querySelectorAll(".btn-delete-post");
     //     btnsDelete.forEach(btn => {
-  
+
     //       btn.addEventListener("click", (e) => {
     //         var id = e.target.dataset.id;
     //       deletePost(id);
     //       })
     //     })
-  
+
     //     var btnsLike = document.querySelectorAll(".likes");
     //     btnsLike.forEach(btn => {
     //       btn.addEventListener("click", (e) => {
@@ -559,25 +579,25 @@ $(document).ready(function () {
     //     })
     //   }
     // }
-  
+
     // // Consulta y ordena los post del mas nuevo al mas antiguo
     // function obtienePosts() {
     //   db.collection("posts").orderBy('orderDate', 'desc').get().then((querySnapshot) => {
     //         postList(querySnapshot.docs);
     //   })
-  
-  
+
+
     //   // fireSQL.query("SELECT * FROM posts inner join likes on likes.idPost = posts.id group by likes.idPost")
-  
+
     // };
-  
+
     // // Consulta y ordena los post del mas nuevo al mas antiguo
     // // function obtienePost() {
     // //   db.collection("posts").get().then((snapshot) => {
     // //     postList(snapshot.docs);
     // //   })
     // // };
-  
+
     // //Funcion que actuliza un posteo
     // function obtienePost(id) {
     //   db.collection("posts").doc(id).get().then((doc) => {
@@ -587,15 +607,15 @@ $(document).ready(function () {
     //     $("#btnSendPost").hide();
     //     $("#btnSavePost").removeClass("d-none");
     //     $("#btnSavePost").show;
-  
+
     //   }).catch((error) =>{
     //     console.log("El error es: ", error);
     //   })
     // }
-  
-  
-  
-  
+
+
+
+
     // //Funcion para el eliminar el post
     // function deletePost(id) {
     //   db.collection("posts").doc(id).delete().then(() => {
@@ -605,56 +625,89 @@ $(document).ready(function () {
     //   }).catch((error) => {
     //     console.log("Error al eliminar el posteo", error)
     //   })
-  
+
     // }
-  
+
     //Funcion que permite añadir url de la imagen al registro recien creado en firestore
     function agregarImagen(file, name, id) {
-      const metadata = {
-        contentType: file.type
-      }
-      const uploadTask = storageRef.child(`images/${name}`).put(file, metadata);
-      uploadTask.on(firebase.storage.TaskEvent.STAGE_CHANGED,
-        (snapshot) => {
-          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is' + progress + '%done');
-          switch (snapshot.state) {
-            case firebase.storage.TaskState.PAUSED:
-              console.log(" Upload is paused")
-              break;
-            case firebase.storage.TaskState.RUNNING:
-              console.log(" Upload is running")
-              break;
-  
-          }
-        },
-        (error) => {
-          switch (error.code) {
-            case 'storage/unauthorized':
-              //El usuario no tiene permiso para acceder al objeto
-              break;
-            case 'storage/canceled':
-              //El usuario cancela la carga
-              break;
-            case 'storage/unknow':
-              //Unknow error ocurred, inspect error.serverResponse
-              break;
-          }
-        },
-  
-        async () => {
-          const url = await uploadTask.snapshot.ref.getDownloadURL();
-          db.collection("posts").doc(id).update({
-            urltext: url
-          }).then(() => {
-            window.location.reload();
-          })
+        const metadata = {
+            contentType: file.type
         }
-      );
+        const uploadTask = storageRef.child(`images/${name}`).put(file, metadata);
+        uploadTask.on(firebase.storage.TaskEvent.STAGE_CHANGED,
+            (snapshot) => {
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is' + progress + '%done');
+                switch (snapshot.state) {
+                    case firebase.storage.TaskState.PAUSED:
+                        console.log(" Upload is paused")
+                        break;
+                    case firebase.storage.TaskState.RUNNING:
+                        console.log(" Upload is running")
+                        break;
+
+                }
+            },
+            (error) => {
+                switch (error.code) {
+                    case 'storage/unauthorized':
+                        //El usuario no tiene permiso para acceder al objeto
+                        break;
+                    case 'storage/canceled':
+                        //El usuario cancela la carga
+                        break;
+                    case 'storage/unknow':
+                        //Unknow error ocurred, inspect error.serverResponse
+                        break;
+                }
+            },
+
+            async () => {
+                const url = await uploadTask.snapshot.ref.getDownloadURL();
+                db.collection("contenidos").doc(id).update({
+                    urlimagen: url
+                }).then(() => {
+                    window.location.reload();
+                })
+            }
+        );
     }
-  
-    
-  
+
+
+
+    const datePostDB = () => {
+        const datePost = {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+        };
+        const timePost = {
+            hour12: 'true',
+            hour: 'numeric',
+            minute: 'numeric',
+        };
+        const date = new Date().toLocaleDateString('es-CL', datePost);
+        const time = new Date().toLocaleTimeString('es-CL', timePost);
+        const dateTime = `${date} ${time}`;
+        return dateTime;
+    };
+
+    const orderDate = () => {
+        const dateNow = new Date();
+        const year = dateNow.getFullYear();
+        const month = `0${dateNow.getMonth()}`.slice(-2);
+        const day = `0${dateNow.getDate()}`.slice(-2);
+        const hour = `0${dateNow.getHours()}`.slice(-2);
+        const minute = `0${dateNow.getMinutes()}`.slice(-2);
+        const second = `0${dateNow.getSeconds()}`.slice(-2);
+        return parseInt(`${year}${month}${day}${hour}${minute}${second}`, 0);
+    };
+
+
+
+
+
+
     /* 
       //Funcion para obtener el dia y la hora en español
        const datePostDB = () => {
@@ -669,6 +722,7 @@ $(document).ready(function () {
           minute: 'numeric',
         };
       
+        /*
         const date = new Date().toLocaleDateString('es-Es', datePost);
         const time = new Date().toLocaleTimeString('es-Es', timePost);
         const dateTime = `${date} ${time}`;
@@ -676,18 +730,9 @@ $(document).ready(function () {
         return dateTime;
       };
       
-      const orderDate = () => {
-        const dateNow = new Date();
-        const year = dateNow.getFullYear();
-        const month = `0${dateNow.getMonth()}`.slice(-2);
-        const day = `0${dateNow.getDate()}`.slice(-2);
-        const hour = `0${dateNow.getHours()}`.slice(-2);
-        const minute = `0${dateNow.getMinutes()}`.slice(-2);
-        const second = `0${dateNow.getSeconds()}`.slice(-2);
-        return parseInt(`${year}${month}${day}${hour}${minute}${second}`, 0);
-      };
+      
      */
-  
+
     // Metodo que sirve para mostrar los países en la tabla
     //   function postList(data) {
     //     $("#postList").empty();
@@ -709,33 +754,33 @@ $(document).ready(function () {
     //     }
     //   };
     // ;
-  
+
     function loadUserInfo() {
-      const user = firebase.auth().currentUser;
-      var usuariosRef = db.collection("usuarios");
-      var query = usuariosRef.where("email", "==", user.email);
-      var usuario = null;
-      query.get().then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            usuario = doc;
-            const rol = usuario.data().rol;
-      let html = "";
-      if (user !== null) {
-        const displayName = user.displayName;
-        const email = user.email;
-        var photoURL = "";
-        if (user.photoURL != null) {
-          photoURL = user.photoURL;
-        } else {
-          photoURL = "https://toppng.com/uploads/preview/user-font-awesome-nuevo-usuario-icono-11563566658mjtfvilgcs.png";
-        }
-        const emailVerified = user.emailVerified;
-        const uid = user.uid;
-        if (rol == "ESTUDIANTE") {
-            window.location.href = "/Nosotras/estudiantes.html";
-            } 
-        html =
-          `
+        const user = firebase.auth().currentUser;
+        var usuariosRef = db.collection("usuarios");
+        var query = usuariosRef.where("email", "==", user.email);
+        var usuario = null;
+        query.get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                usuario = doc;
+                const rol = usuario.data().rol;
+                let html = "";
+                if (user !== null) {
+                    const displayName = user.displayName;
+                    const email = user.email;
+                    var photoURL = "";
+                    if (user.photoURL != null) {
+                        photoURL = user.photoURL;
+                    } else {
+                        photoURL = "https://toppng.com/uploads/preview/user-font-awesome-nuevo-usuario-icono-11563566658mjtfvilgcs.png";
+                    }
+                    const emailVerified = user.emailVerified;
+                    const uid = user.uid;
+                    if (rol == "ESTUDIANTE") {
+                        window.location.href = "/Nosotras/estudiantes.html";
+                    }
+                    html =
+                        `
             <div class="card-body text-center " >
             <div style="align-items:center; justify-content:center; ">
               <div id="contenedorUser" class="text-center;">
@@ -749,29 +794,29 @@ $(document).ready(function () {
               </div>
             </div>
               `;
-        $("#userInfo").append(html);
-      }
-          })
-      })
-      
+                    $("#userInfo").append(html);
+                }
+            })
+        })
+
     }
-  
+
     //Funcion para agregar nombre despues de crear un usuario nuevo
     function addFullName(fullName) {
-      const user = firebase.auth().currentUser;
-      user.updateProfile({
-        displayName: fullName
-      }).then(() => {
-        // Recargo despues de agregar nombre de usuario
-        window.location.reload();
-      }).catch((error) => {
-  
-      });
+        const user = firebase.auth().currentUser;
+        user.updateProfile({
+            displayName: fullName
+        }).then(() => {
+            // Recargo despues de agregar nombre de usuario
+            window.location.reload();
+        }).catch((error) => {
+
+        });
     }
-  
+
     // async function agregarLike(id){
     //   var espuesta =await userTieneLike(id);
-  
+
     //   if(tieneLike == 1){
     //     console.log("NO PUEDE VOLVER A DAR LIKE");
     //   }else {
@@ -787,9 +832,9 @@ $(document).ready(function () {
     //     // obtieneLikes();
     //     })
     //   }
-  
+
     // }
-  
-  
-  
-  });
+
+
+
+});

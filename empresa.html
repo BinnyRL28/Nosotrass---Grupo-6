@@ -67,7 +67,7 @@
                             <div class="mb-md-5 mt-md-4">
                                 <h2 class="fw-bold mb-2 text-uppercase">Login Empresa</h2>
                                 <p class="text-white-50 mb-5">
-                                Por favor, ingrese su email y contraseña.
+                                Por favor, ingrese su email y contraseña para publicar más contenido informativo.
                                 </p>
                                 <div id="alert-login" 
                                 class="alert alert-danger d-none" 
@@ -78,7 +78,7 @@
                                 <div id="alert-login-2" 
                                 class="alert alert-danger d-none" 
                                 role="alert">
-                                Email y contraseña no se sabe cuando tratran de registrdos en el odicequadr
+                                Email y contraseña no se sabe cuando tratran de registrados en el odicequadr
                                 </div>
 
                                 <div id="alert-login-registro" 
@@ -173,6 +173,15 @@
                                             <span class="ms-3"> Registrar </span></i>
 
                                     </button>
+                                    <!-- <div
+                                    class="d-flex justify-content-center text-center mt-4 pt-1  btn-back d-none"> -->
+                                      <button
+                                      class="btn btn-outline-light btn-lg px-5 d-none w-100 "
+                                      id="btnBack">
+                                          <span>Atrás  <i class="bi bi-arrow-left"></i> </span>
+                                                              
+                                  </button>
+                                  <!-- </div> -->
                                 </form>
 
                                 <div class="d-flex justify-content-center text-center mt-4 pt-1">
@@ -197,7 +206,7 @@
 
 
         <div id="contenidoWeb" class="row">
-            <div id="userProfile" class="card  text-white colg-lg-5 col-md-12 mx auto">
+            <div id="userProfile" class="card  text-white colg-lg-5 col-md-12 mx-auto" style="margin-bottom: 20px;">
 
 
 
@@ -205,18 +214,29 @@
 
                 </div>
             </div>
+            <br>
+            <br>
         
         <div id="containerBodyEmpresa">
+            
+            <br>
+            <h2 class="text-dark text-center">Pueden subir contenido...</h2>
+            <hr class="text-dark">
+            <br>
 
-            <div class="container text-align-center text-center m-auto  " style="margin-bottom: 100px;">
-                <button class="btn bg-pink" id="#container-temario"><a>Añadir más contenido</a> </button>
+            <div class="container text-align-center text-center m-auto  " style="margin-top: 100px;">
+                <button class="btn bg-pink" id="añadirFormulario"><a href="#container-temario">Añadir más contenido</a> </button>
             </div>
+
+            <br>
+            <hr class="text-dark">
+            <br>
 
             <section id="articulos-menstruacion">
 
                 <div class="main">
                     <br>
-                    <h1 class="text-uppercase text-dark" style="font-weight:600;">Menstruación</h1>
+                    <h1 class="text-uppercase text-dark" style="font-weight:900;">Menstruación</h1>
                     <br>
                     <ul class="cards">
                         <li class="cards_item">
@@ -611,7 +631,7 @@
                     </form>
                 </div>
             </div>
-            <div id="postList">
+            <div id="contenidoList">
 
             </div>
         </div>
@@ -681,7 +701,7 @@
                                     <!-- End contact Icon -->
                                     <div class="contact-info">
                                         <h3>Dirección</h3>
-                                        <p>5353 Road Avenue</p>
+                                        <p>Lima, Peru</p>
                                     </div>
                                     <!-- End Contact Info -->
                                 </div>
@@ -759,17 +779,7 @@
                                         <!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
                                         Inscribite y forma parte de la familia...!Sé una más de nosotras!
                                     </p>
-                                    <form action="#">
-                                        <div class="form-row">
-                                            <div class="col dk-footer-form">
-                                                <input type="email" class="form-control "
-                                                    placeholder="Correo Electrónico">
-                                                <button type="submit">
-                                                    <i class="fa fa-send float-end"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    
                                     <!-- End form -->
                                 </div>
                                 <!-- End footer widget -->
@@ -819,10 +829,10 @@
             <!-- End Copyright -->
             <!-- Back to top -->
             <div id="back-to-top" class="back-to-top">
-                <button class="btn btn-dark" title="Back to Top" style="display: block;">
-                    <i class="fa fa-angle-up"></i>
-                </button>
-            </div>
+        <button class="btn btn-dark" title="Back to Top" style="display: block;">
+            <a href="index.html"><i class="fa fa-angle-up"></i></a>
+        </button>
+    </div>
             <!-- End Back to top -->
         </footer>
 

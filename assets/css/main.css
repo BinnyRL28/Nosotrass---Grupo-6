@@ -78,17 +78,17 @@ body{
     /* outline: 1px solid yellow; */
 }
 
-#btnIngresoConEmail{
-    background: linear-gradient(to right, rgb(255, 1, 170), rgb(0, 255, 229));
+/* #btnIngresoConEmail{
+    background: rgb(0, 0, 54);
 }
 
 #btnRegistroConEmail{
-    background: linear-gradient(to right, rgb(255, 1, 170), rgb(0, 255, 229));
+    background: rgb(0, 0, 54);
 }
 
 #btnIngresoGmail{
-    background: linear-gradient(to right, rgb(255, 1, 170), rgb(0, 255, 229));
-}
+    background: rgb(0, 0, 54);
+} */
 
 .container_img{
     margin:0px;
@@ -100,7 +100,13 @@ body{
 
 #añadirFormulario{
     background-color:#8a0155;
-    font-family: monospace;
+   
+}
+
+#añadirFormulario a{
     font-size: 20px;
+    list-style: none;
+    text-decoration: none;
     color:white;
 }
+
